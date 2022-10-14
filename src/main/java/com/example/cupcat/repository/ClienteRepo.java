@@ -7,10 +7,10 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Repository
 public class ClienteRepo {
@@ -28,12 +28,13 @@ public class ClienteRepo {
     }
 
     public boolean saveCliente(Cliente cliente){
+        cliente.setId(generateId());
         if(clienteAlreadyExists(cliente)) return false;
 
-        List<Cliente> clientes = new ArrayList<>(getAll());
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-
         try{
+            List<Cliente> clientes = new ArrayList<>(getAll());
+            ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+
             clientes.add(cliente);
             writer.writeValue(new File(linkFile), clientes);
 
@@ -46,11 +47,15 @@ public class ClienteRepo {
     }
 
     public boolean clienteAlreadyExists(Cliente cliente){
-        return idAlreadyUsed(cliente) || emailAlreadyUsed(cliente) || cpfAlreadyUsed(cliente);
+        try{
+            return idAlreadyUsed(cliente) || emailAlreadyUsed(cliente) || cpfAlreadyUsed(cliente);
+        } catch (NullPointerException ex){
+            return false;
+        }
     }
 
     private boolean idAlreadyUsed(Cliente cliente){
-        return getAll().size() <= cliente.getId();
+        return getAll().size() >= cliente.getId();
     }
 
     private boolean emailAlreadyUsed(Cliente novoCliente){
@@ -67,5 +72,13 @@ public class ClienteRepo {
         }
 
         return false;
+    }
+
+    private int generateId(){
+        try{
+            return getAll().size() + 1;
+        } catch (NullPointerException ex){
+            return 1;
+        }
     }
 }
