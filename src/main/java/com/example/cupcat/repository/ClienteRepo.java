@@ -1,5 +1,6 @@
 package com.example.cupcat.repository;
 
+import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Cliente;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,10 +8,10 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ClienteRepo {
@@ -46,6 +47,12 @@ public class ClienteRepo {
         return false;
     }
 
+    public Optional<Cliente> getClienteById(int id){
+        if (!idAlreadyUsed(id)) throw new NotFoundException("Cliente não encontrado");
+
+        return Optional.of(getAll().get(id - 1));
+    }
+
     public boolean clienteAlreadyExists(Cliente cliente){
         try{
             return idAlreadyUsed(cliente) || emailAlreadyUsed(cliente) || cpfAlreadyUsed(cliente);
@@ -56,6 +63,10 @@ public class ClienteRepo {
 
     private boolean idAlreadyUsed(Cliente cliente){
         return getAll().size() >= cliente.getId();
+    }
+
+    private boolean idAlreadyUsed(int id){
+        return getAll().size() >= id;
     }
 
     private boolean emailAlreadyUsed(Cliente novoCliente){

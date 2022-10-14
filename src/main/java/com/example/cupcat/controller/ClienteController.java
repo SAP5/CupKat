@@ -26,4 +26,9 @@ public class ClienteController {
     public void saveCliente(@RequestBody Cliente cliente){
         clienteService.save(cliente);
     }
+
+    @GetMapping("/by_id/{id}")
+    public ResponseEntity<ClienteDTO> getClienteById(@PathVariable int id){
+        return new ResponseEntity<>(clienteService.getClienteById(id).get(), HttpStatus.OK);
+    }
 }
