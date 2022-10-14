@@ -53,6 +53,26 @@ public class ClienteRepo {
         return Optional.of(getAll().get(id - 1));
     }
 
+    public Optional<Cliente> deleteClienteById(int id){
+        if (!idAlreadyUsed(id)) throw new NotFoundException("Cliente não encontrado");
+
+        Optional<Cliente> cliente = getClienteById(id);
+
+        try{
+            List<Cliente> clientes = new ArrayList<>(getAll());
+            ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+
+            clientes.remove(id - 1);
+            writer.writeValue(new File(linkFile), clientes);
+
+            return cliente;
+        } catch (Exception ex){
+            System.out.println("Erro ao salvar os dados!");
+        }
+
+        return Optional.empty();
+    }
+
     public boolean clienteAlreadyExists(Cliente cliente){
         try{
             return idAlreadyUsed(cliente) || emailAlreadyUsed(cliente) || cpfAlreadyUsed(cliente);

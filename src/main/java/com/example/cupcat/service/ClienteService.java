@@ -31,4 +31,9 @@ public class ClienteService implements ICliente{
     public Optional<ClienteDTO> getClienteById(int id) throws NotFoundException {
         return Optional.of(new ClienteDTO(repo.getClienteById(id).get()));
     }
+
+    @Override
+    public Optional<ClienteDTO> removeClienteById(int id) throws NotFoundException {
+        return Optional.of(new ClienteDTO(repo.deleteClienteById(id).get()));
+    }
 }

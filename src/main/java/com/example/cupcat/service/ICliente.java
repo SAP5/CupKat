@@ -12,4 +12,5 @@ public interface ICliente {
     void save(Cliente cliente) throws AlreadyExistingException;
     List<ClienteDTO> getAll();
     Optional<ClienteDTO> getClienteById(int id) throws NotFoundException;
+    Optional<ClienteDTO> removeClienteById(int id) throws NotFoundException;
 }
