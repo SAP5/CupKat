@@ -28,15 +28,19 @@ public class ClienteRepo {
         return null;
     }
 
-    public boolean saveCliente(Cliente cliente){
-        cliente.setId(generateId());
-        if(clienteAlreadyExists(cliente)) return false;
+    public boolean saveCliente(Cliente cliente, boolean create, int id){
+        List<Cliente> clientes = new ArrayList<>(getAll());
+        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+
+        if(create){
+            cliente.setId(generateId());
+            if(clienteAlreadyExists(cliente)) return false;
+            clientes.add(cliente);
+        } else {
+            clientes.set(id - 1, cliente);
+        }
 
         try{
-            List<Cliente> clientes = new ArrayList<>(getAll());
-            ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-
-            clientes.add(cliente);
             writer.writeValue(new File(linkFile), clientes);
 
             return true;
@@ -51,6 +55,11 @@ public class ClienteRepo {
         if (!idAlreadyUsed(id)) throw new NotFoundException("Cliente não encontrado");
 
         return Optional.of(getAll().get(id - 1));
+    }
+
+    public boolean updateCliente(Cliente cliente, int id){
+        if(!idAlreadyUsed(cliente)) return false;
+        return saveCliente(cliente, false, id);
     }
 
     public Optional<Cliente> deleteClienteById(int id){

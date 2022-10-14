@@ -19,7 +19,7 @@ public class ClienteService implements ICliente{
 
     @Override
     public void save(Cliente cliente) throws AlreadyExistingException {
-        if(!repo.saveCliente(cliente)) throw new AlreadyExistingException("Cliente já cadastrado");
+        if(!repo.saveCliente(cliente, true, 0)) throw new AlreadyExistingException("Cliente já cadastrado");
     }
 
     @Override
@@ -30,6 +30,11 @@ public class ClienteService implements ICliente{
     @Override
     public Optional<ClienteDTO> getClienteById(int id) throws NotFoundException {
         return Optional.of(new ClienteDTO(repo.getClienteById(id).get()));
+    }
+
+    @Override
+    public void updateCliente(Cliente cliente, int id) throws NotFoundException {
+        if(!repo.updateCliente(cliente, id)) throw new NotFoundException("Cliente não encontrado");
     }
 
     @Override

@@ -1,1 +1,19 @@
-[ ]
+[ {
+  "id" : 1,
+  "created_at" : null,
+  "updated_at" : null,
+  "status" : 1,
+  "nome" : "Danielle",
+  "email" : "danielle.sanches@gmail.com",
+  "senha" : "123456asasad",
+  "cpf" : "000.000.000-01"
+}, {
+  "id" : 0,
+  "created_at" : null,
+  "updated_at" : null,
+  "status" : 1,
+  "nome" : "Giovanna",
+  "email" : "giovanna.almeida@gmail.com",
+  "senha" : "123456asasad",
+  "cpf" : "000.000.000-00"
+} ]
