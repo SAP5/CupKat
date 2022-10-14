@@ -46,19 +46,26 @@ public class ClienteRepo {
     }
 
     public boolean clienteAlreadyExists(Cliente cliente){
-        try{
-            AtomicBoolean exists = new AtomicBoolean(false);
+        return idAlreadyUsed(cliente) || emailAlreadyUsed(cliente) || cpfAlreadyUsed(cliente);
+    }
 
-            getAll().stream().map(cliente1 -> {
-                if(cliente1.getEmail().equals(cliente.getEmail())) exists.set(true);
-                if(cliente1.getCpf().equals(cliente.getCpf())) exists.set(true);
-                if(cliente1.equals(cliente)) exists.set(true);
-                return null;
-            });
+    private boolean idAlreadyUsed(Cliente cliente){
+        return getAll().size() <= cliente.getId();
+    }
 
-            return exists.get();
-        }catch (ArrayIndexOutOfBoundsException ex){
-            return false;
+    private boolean emailAlreadyUsed(Cliente novoCliente){
+        for (Cliente cliente : getAll()) {
+            if(cliente.getEmail().equals(novoCliente.getEmail())) return true;
         }
+
+        return false;
+    }
+
+    private boolean cpfAlreadyUsed(Cliente novoCliente){
+        for (Cliente cliente : getAll()){
+            if(cliente.getCpf().equals(novoCliente.getCpf())) return true;
+        }
+
+        return false;
     }
 }

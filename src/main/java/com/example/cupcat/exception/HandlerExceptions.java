@@ -27,10 +27,10 @@ public class HandlerExceptions {
         ExceptionDetails exceptionDetails = ExceptionDetails.builder()
                 .title("Dados já cadastrados")
                 .message(ex.getMessage())
-                .status(HttpStatus.CONFLICT.value())
+                .status(HttpStatus.BAD_REQUEST.value())
                 .timeStamp(LocalDateTime.now())
                 .build();
 
-        return new ResponseEntity<>(exceptionDetails, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(exceptionDetails, HttpStatus.BAD_REQUEST);
     }
 }
