@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveCliente(@RequestBody Cliente cliente){
+    public void saveCliente(@Valid @RequestBody Cliente cliente){
         clienteService.save(cliente);
     }
 

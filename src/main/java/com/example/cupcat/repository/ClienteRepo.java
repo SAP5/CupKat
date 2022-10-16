@@ -2,6 +2,7 @@ package com.example.cupcat.repository;
 
 import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Cliente;
+import com.example.cupcat.util.ValidaCPF;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -35,6 +36,8 @@ public class ClienteRepo {
         if(create){
             cliente.setId(generateId());
             if(clienteAlreadyExists(cliente)) return false;
+            if(ValidaCPF.isCPF(cliente.getCpf())) return false;
+
             clientes.add(cliente);
         } else {
             clientes.set(id - 1, cliente);
