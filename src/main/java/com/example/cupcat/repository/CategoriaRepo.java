@@ -68,7 +68,7 @@ public class CategoriaRepo {
     public Optional<Categoria> deleteCategoriaById(int id){
         if (!idAlreadyUsed(id)) throw new NotFoundException("Categoria não encontrada");
 
-        Optional<Categoria> cliente = getCategoriaById(id);
+        Optional<Categoria> categoria = getCategoriaById(id);
 
         try{
             List<Categoria> categorias = new ArrayList<>(getAll());
@@ -77,7 +77,7 @@ public class CategoriaRepo {
             categorias.remove(id - 1);
             writer.writeValue(new File(linkFile), categorias);
 
-            return cliente;
+            return categoria;
         } catch (Exception ex){
             System.out.println("Erro ao salvar os dados!");
         }
