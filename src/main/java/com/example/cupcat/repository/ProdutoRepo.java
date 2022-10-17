@@ -74,7 +74,8 @@ public class ProdutoRepo {
     }
 
     public boolean updateProduto(ProdutoDTO produto, int id){
-        if(!idAlreadyUsed(produto)) return false;
+        if(getProdutoById(id).isEmpty()) return false;
+
         return saveProduto(produto, false, id);
     }
 

@@ -62,7 +62,8 @@ public class ClienteRepo {
     }
 
     public boolean updateCliente(Cliente cliente, int id){
-        if(!idAlreadyUsed(cliente)) return false;
+        if(getClienteById(id).isEmpty()) return false;
+
         return saveCliente(cliente, false, id);
     }
 

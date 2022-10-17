@@ -60,7 +60,8 @@ public class CategoriaRepo {
     }
 
     public boolean updateCategoria(Categoria categoria, int id){
-        if(!idAlreadyUsed(categoria)) return false;
+        if(getCategoriaById(id).isEmpty()) return false;
+
         return saveCategoria(categoria, false, id);
     }
 

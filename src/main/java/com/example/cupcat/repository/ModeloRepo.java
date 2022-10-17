@@ -61,7 +61,8 @@ public class ModeloRepo {
     }
 
     public boolean updateModelo(Modelo modelo, int id){
-        if(!idAlreadyUsed(modelo)) return false;
+        if(getModeloById(id).isEmpty()) return false;
+
         return saveModelo(modelo, false, id);
     }
 
