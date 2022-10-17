@@ -45,4 +45,9 @@ public class ProdutoService implements IProduto{
     public Optional<List<Produto>> getProdutosByNome(String nome) {
         return repo.getProdutosByNome(nome);
     }
+
+    @Override
+    public Optional<List<Produto>> getProdutosByCategoria(int categoria) {
+        return repo.getProdutosByCategoria(categoria);
+    }
 }

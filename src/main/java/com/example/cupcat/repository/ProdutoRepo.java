@@ -107,6 +107,21 @@ public class ProdutoRepo {
         return Optional.of(produtos);
     }
 
+    public Optional<List<Produto>> getProdutosByCategoria(int idCategoria){
+        serviceCategoria.getCategoriaById(idCategoria).get();
+
+        List<Produto> produtos = new ArrayList<>();
+        for(Produto produto : getAll()){
+            if(produto.getCategorias() == null) continue;
+
+            for(Categoria categoria : produto.getCategorias()){
+                if(categoria.getId() == idCategoria) produtos.add(produto);
+            }
+        }
+
+        return Optional.of(produtos);
+    }
+
     private boolean idAlreadyUsed(ProdutoDTO produto){
         return getAll().size() >= produto.getId();
     }
