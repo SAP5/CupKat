@@ -39,6 +39,7 @@ public class ModeloRepo {
 
             modelos.add(modelo);
         } else {
+            modelo.setId(id);
             modelos.set(id - 1, modelo);
         }
 

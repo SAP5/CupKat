@@ -5,7 +5,6 @@ import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
 import com.example.cupcat.model.Produto;
-import com.example.cupcat.service.CategoriaService;
 import com.example.cupcat.service.ICategoria;
 import com.example.cupcat.service.IModelo;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
@@ -53,6 +52,7 @@ public class ProdutoRepo {
 
             produtos.add(novoProduto);
         } else {
+            novoProduto.setId(id);
             produtos.set(id - 1, novoProduto);
         }
 

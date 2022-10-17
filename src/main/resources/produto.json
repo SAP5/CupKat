@@ -27,4 +27,33 @@
     "descricao" : "testettetetetetetet"
   },
   "imagem" : null
+}, {
+  "id" : 2,
+  "created_at" : null,
+  "updated_at" : null,
+  "status" : 1,
+  "nome" : "Teste 2",
+  "descricao" : "testettetetetetetet",
+  "lucro" : 10.0,
+  "estoque" : 10,
+  "cores" : [ "Amarelo", "Lilas", "Azul" ],
+  "tamanhos" : [ "Médio", "Pequeno" ],
+  "categorias" : [ {
+    "id" : 1,
+    "created_at" : null,
+    "updated_at" : null,
+    "status" : 1,
+    "titulo" : "Teste",
+    "descricao" : "testettetetetetetet"
+  } ],
+  "modelo" : {
+    "id" : 0,
+    "created_at" : null,
+    "updated_at" : null,
+    "status" : 1,
+    "titulo" : "Cama",
+    "precoCusto" : 123.5,
+    "descricao" : "testettetetetetetet"
+  },
+  "imagem" : null
 } ]

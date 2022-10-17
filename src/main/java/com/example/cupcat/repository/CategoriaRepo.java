@@ -2,8 +2,6 @@ package com.example.cupcat.repository;
 
 import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Categoria;
-import com.example.cupcat.model.Cliente;
-import com.example.cupcat.util.ValidaCPF;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -40,6 +38,7 @@ public class CategoriaRepo {
 
             categorias.add(categoria);
         } else {
+            categoria.setId(id);
             categorias.set(id - 1, categoria);
         }
 

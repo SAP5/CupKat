@@ -40,6 +40,7 @@ public class ClienteRepo {
 
             clientes.add(cliente);
         } else {
+            cliente.setId(id);
             clientes.set(id - 1, cliente);
         }
 
