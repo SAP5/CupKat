@@ -33,7 +33,7 @@ public class ProdutoService implements IProduto{
 
     @Override
     public void updateProduto(ProdutoDTO produto, int id) throws NotFoundException {
-        if(!repo.saveProduto(produto, false, id)) throw new NotFoundException("Produto não encontrado");
+        if(!repo.updateProduto(produto, id)) throw new NotFoundException("Produto não encontrado");
     }
 
     @Override
