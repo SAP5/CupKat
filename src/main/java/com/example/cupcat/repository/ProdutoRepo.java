@@ -98,6 +98,15 @@ public class ProdutoRepo {
         return Optional.empty();
     }
 
+    public Optional<List<Produto>> getProdutosByNome(String nome){
+        List<Produto> produtos = new ArrayList<>();
+        for(Produto produto : getAll()){
+            if(produto.getNome().contains(nome)) produtos.add(produto);
+        }
+
+        return Optional.of(produtos);
+    }
+
     private boolean idAlreadyUsed(ProdutoDTO produto){
         return getAll().size() >= produto.getId();
     }

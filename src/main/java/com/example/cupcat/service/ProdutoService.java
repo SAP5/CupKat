@@ -40,4 +40,9 @@ public class ProdutoService implements IProduto{
     public Optional<Produto> removeProdutoById(int id) throws NotFoundException {
         return repo.deleteProdutoById(id);
     }
+
+    @Override
+    public Optional<List<Produto>> getProdutosByNome(String nome) {
+        return repo.getProdutosByNome(nome);
+    }
 }

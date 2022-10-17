@@ -34,6 +34,11 @@ public class ProdutoController {
         return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
     }
 
+    @GetMapping("/by_name/{nome}")
+    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){
+        return new ResponseEntity<>(produtoService.getProdutosByNome(nome).get(), HttpStatus.OK);
+    }
+
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public void updateProduto(@PathVariable int id, @Valid @RequestBody ProdutoDTO produto){
