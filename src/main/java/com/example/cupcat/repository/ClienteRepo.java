@@ -120,7 +120,7 @@ public class ClienteRepo {
 
     private int generateId(){
         try{
-            return getAll().size() + 1;
+            return getAll().get(getAll().size() - 1).getId() + 1;
         } catch (NullPointerException ex){
             return 1;
         }
