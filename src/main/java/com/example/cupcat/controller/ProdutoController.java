@@ -1,6 +1,7 @@
 package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.ProdutoDTO;
+import com.example.cupcat.model.Modelo;
 import com.example.cupcat.model.Produto;
 import com.example.cupcat.service.IProduto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,21 @@ public class ProdutoController {
     @ResponseStatus(HttpStatus.CREATED)
     public void saveProduto(@Valid @RequestBody ProdutoDTO produto){
         produtoService.save(produto);
+    }
+
+    @GetMapping("/by_id/{id}")
+    public ResponseEntity<Produto> getProdutoById(@PathVariable int id){
+        return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void updateProduto(@PathVariable int id, @Valid @RequestBody ProdutoDTO produto){
+        produtoService.updateProduto(produto, id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Produto> deleteProdutoById(@PathVariable int id){
+        return new ResponseEntity<>(produtoService.removeProdutoById(id).get(), HttpStatus.OK);
     }
 }

@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Data
-public class ProdutoDTO {
+public class ProdutoDTO extends ModelDTO{
     @NotEmpty
     private String nome;
     @NotEmpty

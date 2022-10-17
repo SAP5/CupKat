@@ -1,6 +1,7 @@
 package com.example.cupcat.repository;
 
 import com.example.cupcat.dto.ProdutoDTO;
+import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
 import com.example.cupcat.model.Produto;
@@ -66,7 +67,38 @@ public class ProdutoRepo {
         return false;
     }
 
-    private boolean idAlreadyUsed(Produto produto){
+    public Optional<Produto> getProdutoById(int id){
+        if (!idAlreadyUsed(id)) throw new NotFoundException("Produto não encontrado");
+
+        return Optional.of(getAll().get(id - 1));
+    }
+
+    public boolean updateProduto(ProdutoDTO produto, int id){
+        if(!idAlreadyUsed(produto)) return false;
+        return saveProduto(produto, false, id);
+    }
+
+    public Optional<Produto> deleteProdutoById(int id){
+        if (!idAlreadyUsed(id)) throw new NotFoundException("Produto não encontrado");
+
+        Optional<Produto> produto = getProdutoById(id);
+
+        try{
+            List<Produto> produtos = new ArrayList<>(getAll());
+            ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
+
+            produtos.remove(id - 1);
+            writer.writeValue(new File(linkFile), produtos);
+
+            return produto;
+        } catch (Exception ex){
+            System.out.println("Erro ao salvar os dados!");
+        }
+
+        return Optional.empty();
+    }
+
+    private boolean idAlreadyUsed(ProdutoDTO produto){
         return getAll().size() >= produto.getId();
     }
 
