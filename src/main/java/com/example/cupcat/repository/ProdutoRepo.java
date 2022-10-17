@@ -108,7 +108,6 @@ public class ProdutoRepo {
     }
 
     public Optional<List<Produto>> getProdutosByCategoria(int idCategoria){
-        serviceCategoria.getCategoriaById(idCategoria).get();
 
         List<Produto> produtos = new ArrayList<>();
         for(Produto produto : getAll()){
@@ -117,6 +116,19 @@ public class ProdutoRepo {
             for(Categoria categoria : produto.getCategorias()){
                 if(categoria.getId() == idCategoria) produtos.add(produto);
             }
+        }
+
+        return Optional.of(produtos);
+    }
+
+    public Optional<List<Produto>> getProdutosByModelo(int idModelo){
+
+        List<Produto> produtos = new ArrayList<>();
+
+        for(Produto produto : getAll()){
+            if(produto.getModelo() == null) continue;
+
+            if(produto.getModelo().getId() == idModelo) produtos.add(produto);
         }
 
         return Optional.of(produtos);

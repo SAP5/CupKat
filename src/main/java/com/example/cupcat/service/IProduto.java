@@ -17,4 +17,5 @@ public interface IProduto {
     Optional<Produto> removeProdutoById(int id) throws NotFoundException;
     Optional<List<Produto>> getProdutosByNome(String nome);
     Optional<List<Produto>> getProdutosByCategoria(int categoria);
+    Optional<List<Produto>> getProdutosByModelo(int modelo);
 }

@@ -50,4 +50,9 @@ public class ProdutoService implements IProduto{
     public Optional<List<Produto>> getProdutosByCategoria(int categoria) {
         return repo.getProdutosByCategoria(categoria);
     }
+
+    @Override
+    public Optional<List<Produto>> getProdutosByModelo(int modelo) {
+        return repo.getProdutosByModelo(modelo);
+    }
 }
