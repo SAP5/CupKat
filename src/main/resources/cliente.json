@@ -16,4 +16,13 @@
   "email" : "teste@teste2.com",
   "senha" : "Teste@123",
   "cpf" : "000.000.001-90"
+}, {
+  "id" : 3,
+  "created_at" : null,
+  "updated_at" : null,
+  "status" : 1,
+  "nome" : "Macelina",
+  "email" : "marcelina@email.com",
+  "senha" : "MarcEl@TRE2",
+  "cpf" : "00000000000"
 } ]

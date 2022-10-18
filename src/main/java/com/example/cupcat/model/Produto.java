@@ -6,17 +6,14 @@ import lombok.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Produto extends Model{
+public class Produto extends Model {
     @NotEmpty
     private String nome;
     @NotEmpty
@@ -35,7 +32,7 @@ public class Produto extends Model{
     private Modelo modelo;
     private String imagem;
 
-    public Produto(ProdutoDTO produtoDTO){
+    public Produto(ProdutoDTO produtoDTO) {
         this.nome = produtoDTO.getNome();
         this.descricao = produtoDTO.getDescricao();
         this.lucro = produtoDTO.getLucro();
