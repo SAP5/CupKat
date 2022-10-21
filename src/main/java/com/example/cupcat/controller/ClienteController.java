@@ -23,9 +23,9 @@ public class ClienteController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void saveCliente(@Valid @RequestBody Cliente cliente){
+    public ResponseEntity<String> saveCliente(@Valid @RequestBody Cliente cliente){
         clienteService.save(cliente);
+        return new ResponseEntity<>("Cliente cadastrado com sucesso!", HttpStatus.CREATED);
     }
 
     @GetMapping("/by_id/{id}")
