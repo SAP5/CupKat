@@ -47,7 +47,7 @@ public class ProdutoRepo {
             novoProduto.setId(generateId());
             if(produtoAlreadyExists(novoProduto)) return false;
 
-            novoProduto.setCategorias(getCategorias(produto.getCategorias()));
+//            novoProduto.setCategorias(getCategorias(produto.getCategorias()));
             novoProduto.setModelo(getModelo(produto.getModelo()));
 
             produtos.add(novoProduto);
@@ -112,11 +112,11 @@ public class ProdutoRepo {
 
         List<Produto> produtos = new ArrayList<>();
         for(Produto produto : getAll()){
-            if(produto.getCategorias() == null) continue;
-
-            for(Categoria categoria : produto.getCategorias()){
-                if(categoria.getId() == idCategoria) produtos.add(produto);
-            }
+//            if(produto.getCategorias() == null) continue;
+//
+//            for(Categoria categoria : produto.getCategorias()){
+//                if(categoria.getId() == idCategoria) produtos.add(produto);
+//            }
         }
 
         return Optional.of(produtos);
