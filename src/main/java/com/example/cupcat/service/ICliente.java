@@ -13,5 +13,5 @@ public interface ICliente {
     List<ClienteDTO> getAll();
     Optional<ClienteDTO> getClienteById(int id) throws NotFoundException;
     void updateCliente(Cliente cliente, int id) throws NotFoundException;
-    Optional<ClienteDTO> removeClienteById(int id) throws NotFoundException;
+    void removeClienteById(int id) throws NotFoundException;
 }

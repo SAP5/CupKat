@@ -3,16 +3,14 @@ package com.example.cupcat.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 @Data
+@Entity
 public class Funcionario{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +37,6 @@ public class Funcionario{
 
     @NotEmpty(message = "A senha não pode estar vazia")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\\1)){8,}$", message = "A senha é muito fraca")
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String senha;
 }

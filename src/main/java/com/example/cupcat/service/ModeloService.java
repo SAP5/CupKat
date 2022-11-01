@@ -5,39 +5,42 @@ import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
 import com.example.cupcat.repository.ModeloRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Service
+@RequiredArgsConstructor
 public class ModeloService implements IModelo{
-    @Autowired
-    private ModeloRepo repo;
+    private final ModeloRepo repo;
 
     @Override
     public void save(Modelo modelo) throws AlreadyExistingException {
-        if(!repo.saveModelo(modelo, true, 0)) throw new AlreadyExistingException("Modelo já cadastrado");
+        repo.save(modelo);
     }
 
     @Override
     public List<Modelo> getAll() {
-        return repo.getAll();
+        return repo.findAll();
     }
 
     @Override
     public Optional<Modelo> getModeloById(int id) throws NotFoundException {
-        return repo.getModeloById(id);
+        return repo.findById(id);
     }
 
     @Override
     public void updateModelo(Modelo modelo, int id) throws NotFoundException {
-        if(!repo.updateModelo(modelo, id)) throw new NotFoundException("Modelo não encontrado");
+        modelo.setId(id);
+        repo.save(modelo);
     }
 
     @Override
-    public Optional<Modelo> removeModeloById(int id) throws NotFoundException {
-        return repo.deleteModeloById(id);
+    public void removeModeloById(int id) throws NotFoundException {
+        repo.deleteById(id);
     }
 }

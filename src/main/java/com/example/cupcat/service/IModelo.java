@@ -13,5 +13,5 @@ public interface IModelo {
     List<Modelo> getAll();
     Optional<Modelo> getModeloById(int id) throws NotFoundException;
     void updateModelo(Modelo modelo, int id) throws NotFoundException;
-    Optional<Modelo> removeModeloById(int id) throws NotFoundException;
+    void removeModeloById(int id) throws NotFoundException;
 }

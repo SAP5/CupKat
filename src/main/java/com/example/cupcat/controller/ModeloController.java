@@ -39,8 +39,8 @@ public class ModeloController {
         modeloService.updateModelo(modelo, id);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Modelo> deleteModeloById(@PathVariable int id){
-        return new ResponseEntity<>(modeloService.removeModeloById(id).get(), HttpStatus.OK);
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<Modelo> deleteModeloById(@PathVariable int id){
+//        return new ResponseEntity<>(modeloService.removeModeloById(id).get(), HttpStatus.OK);
+//    }
 }

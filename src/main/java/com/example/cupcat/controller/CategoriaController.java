@@ -38,8 +38,8 @@ public class CategoriaController {
         categoriaService.updateCategoria(categoria, id);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Categoria> deleteCategoriaById(@PathVariable int id){
-        return new ResponseEntity<>(categoriaService.removeCategoriaById(id).get(), HttpStatus.OK);
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<Categoria> deleteCategoriaById(@PathVariable int id){
+//        return new ResponseEntity<>(categoriaService.removeCategoriaById(id).get(), HttpStatus.OK);
+//    }
 }

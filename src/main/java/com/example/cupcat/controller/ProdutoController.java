@@ -26,7 +26,7 @@ public class ProdutoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void saveProduto(@Valid @RequestBody ProdutoDTO produto){
-        produtoService.save(produto);
+        produtoService.save(new Produto(produto));
     }
 
     @GetMapping("/by_id/{id}")
@@ -34,29 +34,29 @@ public class ProdutoController {
         return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
     }
 
-    @GetMapping("/by_name/{nome}")
-    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){
-        return new ResponseEntity<>(produtoService.getProdutosByNome(nome).get(), HttpStatus.OK);
-    }
-
-    @GetMapping("/by_category/{categoria}")
-    public ResponseEntity<List<Produto>> getProdutosByCategoria(@PathVariable int categoria){
-        return new ResponseEntity<>(produtoService.getProdutosByCategoria(categoria).get(), HttpStatus.OK);
-    }
-
-    @GetMapping("/by_modelo/{modelo}")
-    public ResponseEntity<List<Produto>> getProdutosByModelo(@PathVariable int modelo){
-        return new ResponseEntity<>(produtoService.getProdutosByModelo(modelo).get(), HttpStatus.OK);
-    }
-
-    @PutMapping("/update/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void updateProduto(@PathVariable int id, @Valid @RequestBody ProdutoDTO produto){
-        produtoService.updateProduto(produto, id);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Produto> deleteProdutoById(@PathVariable int id){
-        return new ResponseEntity<>(produtoService.removeProdutoById(id).get(), HttpStatus.OK);
-    }
+//    @GetMapping("/by_name/{nome}")
+//    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){
+//        return new ResponseEntity<>(produtoService.getProdutosByNome(nome).get(), HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/by_category/{categoria}")
+//    public ResponseEntity<List<Produto>> getProdutosByCategoria(@PathVariable int categoria){
+//        return new ResponseEntity<>(produtoService.getProdutosByCategoria(categoria).get(), HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/by_modelo/{modelo}")
+//    public ResponseEntity<List<Produto>> getProdutosByModelo(@PathVariable int modelo){
+//        return new ResponseEntity<>(produtoService.getProdutosByModelo(modelo).get(), HttpStatus.OK);
+//    }
+//
+//    @PutMapping("/update/{id}")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void updateProduto(@PathVariable int id, @Valid @RequestBody ProdutoDTO produto){
+//        produtoService.updateProduto(produto, id);
+//    }
+//
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<Produto> deleteProdutoById(@PathVariable int id){
+//        return new ResponseEntity<>(produtoService.removeProdutoById(id).get(), HttpStatus.OK);
+//    }
 }
