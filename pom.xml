@@ -15,8 +15,6 @@
     <description>CupCat</description>
     <properties>
         <java.version>11</java.version>
-        <maven.compiler.source>3.2.0</maven.compiler.source>
-        <maven.compiler.target>3.2.0</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -45,7 +43,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-            <version>1.18.24</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
