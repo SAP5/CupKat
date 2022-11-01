@@ -1,5 +1,6 @@
 package com.example.cupcat.controller;
 
+import com.example.cupcat.dto.ModeloDTO;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
 import com.example.cupcat.service.IModelo;
@@ -34,13 +35,13 @@ public class ModeloController {
     }
 
     @PutMapping("/update/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public void updateModelo(@PathVariable int id, @Valid @RequestBody Modelo modelo){
         modeloService.updateModelo(modelo, id);
     }
 
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<Modelo> deleteModeloById(@PathVariable int id){
-//        return new ResponseEntity<>(modeloService.removeModeloById(id).get(), HttpStatus.OK);
-//    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ModeloDTO> deleteModeloById(@PathVariable int id){
+        return new ResponseEntity<>(new ModeloDTO(modeloService.removeModeloById(id).get()), HttpStatus.OK);
+    }
 }

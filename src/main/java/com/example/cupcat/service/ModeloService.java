@@ -40,7 +40,10 @@ public class ModeloService implements IModelo{
     }
 
     @Override
-    public void removeModeloById(int id) throws NotFoundException {
+    public Optional<Modelo> removeModeloById(int id) throws NotFoundException {
+        Optional<Modelo> modelo = this.getModeloById(id);
         repo.deleteById(id);
+
+        return modelo;
     }
 }

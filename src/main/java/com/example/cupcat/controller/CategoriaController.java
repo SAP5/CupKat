@@ -34,7 +34,7 @@ public class CategoriaController {
     }
 
     @PutMapping("/update/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public void updateCategoria(@PathVariable int id, @Valid @RequestBody Categoria categoria){
         categoria.setId(id);
         categoriaService.updateCategoria(categoria);
