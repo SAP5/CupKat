@@ -136,6 +136,7 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
+                        <exclude>org.apache.maven.plugins</exclude>
                     </excludes>
                 </configuration>
             </plugin>
