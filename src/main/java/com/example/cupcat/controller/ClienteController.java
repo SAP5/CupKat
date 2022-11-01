@@ -33,9 +33,12 @@ public class ClienteController {
         return new ResponseEntity<>(clienteService.getClienteById(id).get(), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateCliente(@RequestBody Cliente cliente){ clienteService.updateCliente(cliente); }
+    public void updateCliente(@RequestBody Cliente cliente, @PathVariable int id){
+        cliente.setId(id);
+        clienteService.updateCliente(cliente);
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<ClienteDTO> removeClienteById(@PathVariable int id){
