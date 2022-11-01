@@ -1,5 +1,6 @@
 package com.example.cupcat.controller;
 
+import com.example.cupcat.dto.CategoriaDTO;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.service.ICategoria;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +36,12 @@ public class CategoriaController {
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public void updateCategoria(@PathVariable int id, @Valid @RequestBody Categoria categoria){
-        categoriaService.updateCategoria(categoria, id);
+        categoria.setId(id);
+        categoriaService.updateCategoria(categoria);
     }
 
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<Categoria> deleteCategoriaById(@PathVariable int id){
-//        return new ResponseEntity<>(categoriaService.removeCategoriaById(id).get(), HttpStatus.OK);
-//    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<CategoriaDTO> deleteCategoriaById(@PathVariable int id){
+        return new ResponseEntity<>(new CategoriaDTO(categoriaService.removeCategoriaById(id).get()), HttpStatus.OK);
+    }
 }

@@ -11,6 +11,6 @@ public interface ICategoria {
     void save(Categoria categoria) throws AlreadyExistingException;
     List<Categoria> getAll();
     Optional<Categoria> getCategoriaById(int id) throws NotFoundException;
-    void updateCategoria(Categoria categoria, int id) throws NotFoundException;
-    void removeCategoriaById(int id) throws NotFoundException;
+    void updateCategoria(Categoria categoria) throws NotFoundException;
+    Optional<Categoria> removeCategoriaById(int id) throws NotFoundException;
 }
