@@ -139,6 +139,9 @@
                         <exclude>
                             <groupId>org.apache.maven.plugins</groupId>
                         </exclude>
+                        <exclude>
+                            <groupId>org.apache.maven.plugin</groupId>
+                        </exclude>
                     </excludes>
                 </configuration>
             </plugin>
