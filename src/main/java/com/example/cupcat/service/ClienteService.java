@@ -33,12 +33,15 @@ public class ClienteService implements ICliente{
     }
 
     @Override
-    public void updateCliente(Cliente cliente, int id) throws NotFoundException {
+    public void updateCliente(Cliente cliente) throws NotFoundException {
         repo.save(cliente);
     }
 
     @Override
-    public void removeClienteById(int id) throws NotFoundException {
+    public Optional<ClienteDTO> removeClienteById(int id) throws NotFoundException {
+        Optional<ClienteDTO> clienteDTO = this.getClienteById(id);
         repo.deleteById(id);
+
+        return clienteDTO;
     }
 }
