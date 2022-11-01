@@ -131,18 +131,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                        <exclude>
-                            <groupId>org.apache.maven.plugins</groupId>
-                        </exclude>
-                        <exclude>
-                            <groupId>org.apache.maven.plugin</groupId>
-                        </exclude>
-                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
