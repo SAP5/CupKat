@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>CupCat</name>
     <description>CupCat</description>
+    <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
@@ -113,19 +114,8 @@
     </dependencies>
 
     <build>
+        <finalName>CupCat</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -133,14 +123,14 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
                             <mainClass>com.example.cupcat.CupCatApplication</mainClass>
                         </manifest>
-                        <manifestEntries>
-                            <Created-By>cupcat</Created-By>
-                        </manifestEntries>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
