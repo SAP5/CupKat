@@ -1,1 +1,0 @@
-web: java "Xmx1024m" -Dserver.port=443 -jar target/*.jar
