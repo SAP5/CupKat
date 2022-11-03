@@ -133,7 +133,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <packageName>com.example.cupcat</packageName>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.example.cupcat.CupCatApplication</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Created-By>cupcat</Created-By>
