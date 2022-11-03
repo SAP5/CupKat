@@ -34,10 +34,10 @@ public class ProdutoController {
         return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
     }
 
-//    @GetMapping("/by_name/{nome}")
-//    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){
-//        return new ResponseEntity<>(produtoService.getProdutosByNome(nome).get(), HttpStatus.OK);
-//    }
+    @GetMapping("/by_name/{nome}")
+    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){
+        return new ResponseEntity<>(produtoService.getProdutosByNome(nome).get(), HttpStatus.OK);
+    }
 //
 //    @GetMapping("/by_category/{categoria}")
 //    public ResponseEntity<List<Produto>> getProdutosByCategoria(@PathVariable int categoria){
@@ -48,15 +48,15 @@ public class ProdutoController {
 //    public ResponseEntity<List<Produto>> getProdutosByModelo(@PathVariable int modelo){
 //        return new ResponseEntity<>(produtoService.getProdutosByModelo(modelo).get(), HttpStatus.OK);
 //    }
-//
-//    @PutMapping("/update/{id}")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void updateProduto(@PathVariable int id, @Valid @RequestBody ProdutoDTO produto){
-//        produtoService.updateProduto(produto, id);
-//    }
-//
-//    @DeleteMapping("/delete/{id}")
-//    public ResponseEntity<Produto> deleteProdutoById(@PathVariable int id){
-//        return new ResponseEntity<>(produtoService.removeProdutoById(id).get(), HttpStatus.OK);
-//    }
+
+    @PutMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void updateProduto(@PathVariable int id, @Valid @RequestBody ProdutoDTO produto){
+        produtoService.updateProduto(produto, id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Produto> deleteProdutoById(@PathVariable int id){
+        return new ResponseEntity<>(produtoService.removeProdutoById(id).get(), HttpStatus.OK);
+    }
 }

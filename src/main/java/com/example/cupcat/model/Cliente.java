@@ -9,7 +9,11 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Cliente implements Serializable {
     @Id
@@ -43,4 +47,9 @@ public class Cliente implements Serializable {
     @Pattern(regexp = "^[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}", message = "O cpf está em um formato inválido")
     @Column(unique = true)
     private String cpf;
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

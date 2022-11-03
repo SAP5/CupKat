@@ -1,6 +1,6 @@
 package com.example.cupcat.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -9,7 +9,11 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Funcionario implements Serializable {
     @Id
@@ -39,4 +43,9 @@ public class Funcionario implements Serializable {
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\\1)){8,}$", message = "A senha é muito fraca")
     @Column(nullable = false)
     private String senha;
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

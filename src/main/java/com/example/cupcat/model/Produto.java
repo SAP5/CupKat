@@ -13,9 +13,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Data
-@Entity
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -95,5 +98,10 @@ public class Produto implements Serializable {
         this.descricao = produtoDTO.getDescricao();
         this.lucro = produtoDTO.getLucro();
         this.estoque = produtoDTO.getEstoque();
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

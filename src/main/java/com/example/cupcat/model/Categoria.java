@@ -10,7 +10,11 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Categoria implements Serializable {
     @Id
@@ -37,5 +41,11 @@ public class Categoria implements Serializable {
     @ManyToMany(mappedBy = "categorias")
     @JsonIgnoreProperties("categorias")
     @JsonManagedReference
+    @ToString.Exclude
     private Set<Produto> produtos;
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

@@ -3,7 +3,6 @@ package com.example.cupcat.service;
 import com.example.cupcat.dto.ProdutoDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
 import com.example.cupcat.exception.NotFoundException;
-import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Produto;
 
 import java.util.List;
@@ -14,9 +13,9 @@ public interface IProduto {
 
     List<Produto> getAll();
     Optional<Produto> getProdutoById(int id) throws NotFoundException;
-    void updateProduto(Produto produto, int id) throws NotFoundException;
-    void removeProdutoById(int id) throws NotFoundException;
-//    Optional<List<Produto>> getProdutosByNome(String nome);
+    void updateProduto(ProdutoDTO produto, int id) throws NotFoundException;
+    Optional<Produto> removeProdutoById(int id) throws NotFoundException;
+    Optional<List<Produto>> getProdutosByNome(String nome);
 //    Optional<List<Produto>> getProdutosByCategoria(int categoria);
 //    Optional<List<Produto>> getProdutosByModelo(int modelo);
 }

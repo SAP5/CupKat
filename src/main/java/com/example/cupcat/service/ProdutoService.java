@@ -24,11 +24,7 @@ public class ProdutoService implements IProduto{
 
     @Override
     public void save(ProdutoDTO produtoDTO) throws AlreadyExistingException {
-        Produto produto = new Produto(produtoDTO);
-        produto.setModelo(modeloService.getModeloById(produtoDTO.getModelo()).get());
-        produto.setCores(produtoDTO.getCores().stream().map(corId -> corService.getCorById(corId).get()).collect(Collectors.toSet()));
-        produto.setTamanhos(produtoDTO.getTamanhos().stream().map(tamId -> tamService.getTamanhoById(tamId).get()).collect(Collectors.toSet()));
-        produto.setCategorias(produtoDTO.getCategorias().stream().map(catId -> catService.getCategoriaById(catId).get()).collect(Collectors.toSet()));
+        Produto produto = createAttributes(produtoDTO);
 
         repo.save(produto);
     }
@@ -45,20 +41,26 @@ public class ProdutoService implements IProduto{
     }
 
     @Override
-    public void updateProduto(Produto produto, int id) throws NotFoundException {
+    public void updateProduto(ProdutoDTO produtoDTO, int id) throws NotFoundException {
+        Produto produto = createAttributes(produtoDTO);
         produto.setId(id);
+
         repo.save(produto);
     }
 
     @Override
-    public void removeProdutoById(int id) throws NotFoundException {
+    public Optional<Produto> removeProdutoById(int id) throws NotFoundException {
+        Optional<Produto> produto = getProdutoById(id);
+
         repo.deleteById(id);
+
+        return produto;
     }
 
-//    @Override
-//    public Optional<List<Produto>> getProdutosByNome(String nome) {
-//        return repo.getProdutosByNome(nome);
-//    }
+    @Override
+    public Optional<List<Produto>> getProdutosByNome(String nome) {
+        return repo.findByNomeContaining(nome);
+    }
 //
 //    @Override
 //    public Optional<List<Produto>> getProdutosByCategoria(int categoria) {
@@ -69,4 +71,14 @@ public class ProdutoService implements IProduto{
 //    public Optional<List<Produto>> getProdutosByModelo(int modelo) {
 //        return repo.getProdutosByModelo(modelo);
 //    }
+
+    private Produto createAttributes(ProdutoDTO produtoDTO){
+        Produto produto = new Produto(produtoDTO);
+        produto.setModelo(modeloService.getModeloById(produtoDTO.getModelo()).get());
+        produto.setCores(produtoDTO.getCores().stream().map(corId -> corService.getCorById(corId).get()).collect(Collectors.toSet()));
+        produto.setTamanhos(produtoDTO.getTamanhos().stream().map(tamId -> tamService.getTamanhoById(tamId).get()).collect(Collectors.toSet()));
+        produto.setCategorias(produtoDTO.getCategorias().stream().map(catId -> catService.getCategoriaById(catId).get()).collect(Collectors.toSet()));
+
+        return produto;
+    }
 }
