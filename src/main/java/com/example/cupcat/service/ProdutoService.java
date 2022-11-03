@@ -1,5 +1,6 @@
 package com.example.cupcat.service;
 
+import com.example.cupcat.dto.ProdutoDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
 import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Produto;
@@ -9,14 +10,26 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ProdutoService implements IProduto{
     private final ProdutoRepo repo;
+    private final IModelo modeloService;
+    private final ICor corService;
+    private final ICategoria catService;
+
+    private final ITamanho tamService;
 
     @Override
-    public void save(Produto produto) throws AlreadyExistingException {
+    public void save(ProdutoDTO produtoDTO) throws AlreadyExistingException {
+        Produto produto = new Produto(produtoDTO);
+        produto.setModelo(modeloService.getModeloById(produtoDTO.getModelo()).get());
+        produto.setCores(produtoDTO.getCores().stream().map(corId -> corService.getCorById(corId).get()).collect(Collectors.toSet()));
+        produto.setTamanhos(produtoDTO.getTamanhos().stream().map(tamId -> tamService.getTamanhoById(tamId).get()).collect(Collectors.toSet()));
+        produto.setCategorias(produtoDTO.getCategorias().stream().map(catId -> catService.getCategoriaById(catId).get()).collect(Collectors.toSet()));
+
         repo.save(produto);
     }
 
@@ -27,6 +40,7 @@ public class ProdutoService implements IProduto{
 
     @Override
     public Optional<Produto> getProdutoById(int id) throws NotFoundException {
+        System.out.println(repo.findById(id).get());
         return repo.findById(id);
     }
 

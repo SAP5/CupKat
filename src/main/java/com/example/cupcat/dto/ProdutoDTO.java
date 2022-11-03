@@ -22,9 +22,9 @@ public class ProdutoDTO extends ModelDTO{
     @PositiveOrZero
     private int estoque;
     @NotEmpty
-    private List<String> cores;
+    private List<Integer> cores;
     @NotEmpty
-    private List<String> tamanhos;
+    private List<Integer> tamanhos;
     @NotEmpty
     private List<Integer> categorias;
     @NotNull

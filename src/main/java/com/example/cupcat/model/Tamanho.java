@@ -1,14 +1,17 @@
 package com.example.cupcat.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
 @Entity
-public class Tamanho {
+public class Tamanho implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -19,12 +22,8 @@ public class Tamanho {
     @Column
     private String tamanho;
 
-    @ManyToMany
-    @JoinTable(
-            name = "produto_tamanho",
-            joinColumns = @JoinColumn(name = "id_tamanho", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id_produto", referencedColumnName = "id")
-    )
+    @ManyToMany(mappedBy = "tamanhos")
     @JsonIgnoreProperties("tamanhos")
+    @JsonManagedReference
     private Set<Produto> produtos;
 }

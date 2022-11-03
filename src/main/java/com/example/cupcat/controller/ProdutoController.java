@@ -18,21 +18,21 @@ public class ProdutoController {
     @Autowired
     private IProduto produtoService;
 
-//    @GetMapping
-//    public ResponseEntity<List<Produto>> getAllProdutos(){
-//        return new ResponseEntity<>(produtoService.getAll(), HttpStatus.OK);
-//    }
-//
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void saveProduto(@Valid @RequestBody ProdutoDTO produto){
-//        produtoService.save(new Produto(produto));
-//    }
-//
-//    @GetMapping("/by_id/{id}")
-//    public ResponseEntity<Produto> getProdutoById(@PathVariable int id){
-//        return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
-//    }
+    @GetMapping
+    public ResponseEntity<List<Produto>> getAllProdutos(){
+        return new ResponseEntity<>(produtoService.getAll(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveProduto(@Valid @RequestBody ProdutoDTO produto){
+        produtoService.save(produto);
+    }
+
+    @GetMapping("/by_id/{id}")
+    public ResponseEntity<Produto> getProdutoById(@PathVariable int id){
+        return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
+    }
 
 //    @GetMapping("/by_name/{nome}")
 //    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){

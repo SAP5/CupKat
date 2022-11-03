@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IProduto {
-    void save(Produto produto) throws AlreadyExistingException;
+    void save(ProdutoDTO produto) throws AlreadyExistingException;
+
     List<Produto> getAll();
     Optional<Produto> getProdutoById(int id) throws NotFoundException;
     void updateProduto(Produto produto, int id) throws NotFoundException;

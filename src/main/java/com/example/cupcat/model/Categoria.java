@@ -1,16 +1,18 @@
 package com.example.cupcat.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
 @Entity
-public class Categoria{
+public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,12 +34,8 @@ public class Categoria{
     @Column
     private String descricao;
 
-    @ManyToMany
-    @JoinTable(
-            name = "produto_categoria",
-            joinColumns = @JoinColumn(name = "id_categoria", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id_produto", referencedColumnName = "id")
-    )
+    @ManyToMany(mappedBy = "categorias")
     @JsonIgnoreProperties("categorias")
+    @JsonManagedReference
     private Set<Produto> produtos;
 }
