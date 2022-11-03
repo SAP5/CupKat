@@ -136,7 +136,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.example.cupcat.CupCatApplication</mainClass>
+                            <mainClass>src.main.java.com.example.cupcat.CupCatApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
