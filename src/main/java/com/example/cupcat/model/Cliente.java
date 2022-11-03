@@ -40,7 +40,7 @@ public class Cliente implements Serializable {
 
     @NotEmpty(message = "A senha não pode estar vazia")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\\1)){8,}$", message = "A senha é muito fraca")
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String senha;
 
     @NotEmpty(message = "O cpf não pode estar vazio")
