@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FuncionarioService implements IFuncionario{
     private final FuncionarioRepo repo;
+    private static final String MSG_ERROR_NOT_FOUND = "Funcionario não encontrado!";
 
     @Override
     public void save(Funcionario funcionario) throws AlreadyExistingException {
@@ -30,18 +32,27 @@ public class FuncionarioService implements IFuncionario{
     }
 
     @Override
-    public Optional<FuncionarioDTO> getFuncionarioById(int id) throws NotFoundException {
-        return Optional.of(new FuncionarioDTO(repo.findById(id).get()));
+    public Optional<FuncionarioDTO> getFuncionarioById(int id) throws NoSuchElementException {
+        Optional<Funcionario> opFunc = repo.findById(id);
+
+        if(opFunc.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return Optional.of(new FuncionarioDTO(opFunc.get()));
     }
 
     @Override
-    public void updateFuncionario(Funcionario funcionario) throws NotFoundException {
+    public void updateFuncionario(Funcionario funcionario) throws NoSuchElementException {
+        if(!repo.existsById(funcionario.getId())) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
         repo.save(funcionario);
     }
 
     @Override
-    public Optional<FuncionarioDTO> removeFuncionarioById(int id) throws NotFoundException {
+    public Optional<FuncionarioDTO> removeFuncionarioById(int id) throws NoSuchElementException {
         Optional<FuncionarioDTO> funcDTO = this.getFuncionarioById(id);
+
+        if(funcDTO.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
         repo.deleteById(id);
 
         return funcDTO;
