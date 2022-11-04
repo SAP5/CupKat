@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -19,8 +20,8 @@ public class ProdutoService implements IProduto{
     private final IModelo modeloService;
     private final ICor corService;
     private final ICategoria catService;
-
     private final ITamanho tamService;
+    private static final String MSG_ERROR_NOT_FOUND = "Produto não encontrado!";
 
     @Override
     public void save(ProdutoDTO produtoDTO) throws AlreadyExistingException {
@@ -35,13 +36,18 @@ public class ProdutoService implements IProduto{
     }
 
     @Override
-    public Optional<Produto> getProdutoById(int id) throws NotFoundException {
-        System.out.println(repo.findById(id).get());
-        return repo.findById(id);
+    public Optional<Produto> getProdutoById(int id) throws NoSuchElementException {
+        Optional<Produto> produto = repo.findById(id);
+
+        if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return produto;
     }
 
     @Override
-    public void updateProduto(ProdutoDTO produtoDTO, int id) throws NotFoundException {
+    public void updateProduto(ProdutoDTO produtoDTO, int id) throws NoSuchElementException {
+        if(!repo.existsById(id)) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
         Produto produto = createAttributes(produtoDTO);
         produto.setId(id);
 
@@ -49,8 +55,10 @@ public class ProdutoService implements IProduto{
     }
 
     @Override
-    public Optional<Produto> removeProdutoById(int id) throws NotFoundException {
+    public Optional<Produto> removeProdutoById(int id) throws NoSuchElementException {
         Optional<Produto> produto = getProdutoById(id);
+
+        if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
 
         repo.deleteById(id);
 
@@ -61,7 +69,7 @@ public class ProdutoService implements IProduto{
     public Optional<List<Produto>> getProdutosByNome(String nome) {
         return repo.findByNomeContaining(nome);
     }
-//
+
 //    @Override
 //    public Optional<List<Produto>> getProdutosByCategoria(int categoria) {
 //        return repo.getProdutosByCategoria(categoria);
