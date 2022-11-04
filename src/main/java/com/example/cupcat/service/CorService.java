@@ -5,6 +5,7 @@ import com.example.cupcat.repository.CorRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,5 +16,10 @@ public class CorService implements ICor{
     @Override
     public Optional<Cor> getCorById(int id) {
         return repo.findById(id);
+    }
+
+    @Override
+    public List<Cor> getAll() {
+        return repo.findAll();
     }
 }
