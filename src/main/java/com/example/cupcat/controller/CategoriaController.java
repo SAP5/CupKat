@@ -26,8 +26,8 @@ public class CategoriaController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveCategoria(@Valid @RequestBody Categoria categoria){
-        categoriaService.save(categoria);
+    public void saveCategoria(@Valid @RequestBody CategoriaDTO categoriaDTO){
+        categoriaService.save(categoriaDTO);
     }
 
     @GetMapping("/by_id/{id}")

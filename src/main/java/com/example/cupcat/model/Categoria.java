@@ -1,5 +1,6 @@
 package com.example.cupcat.model;
 
+import com.example.cupcat.dto.CategoriaDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -43,6 +44,11 @@ public class Categoria implements Serializable {
     @JsonManagedReference
     @ToString.Exclude
     private Set<Produto> produtos;
+
+    public Categoria(CategoriaDTO categoriaDTO) {
+        this.setTitulo(categoriaDTO.getTitulo());
+        this.setDescricao(categoriaDTO.getDescricao());
+    }
 
     @Override
     public int hashCode() {
