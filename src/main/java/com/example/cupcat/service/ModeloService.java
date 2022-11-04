@@ -12,12 +12,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ModeloService implements IModelo{
     private final ModeloRepo repo;
+    private static final String MSG_ERROR_NOT_FOUND = "Modelo não encontrado!";
 
     @Override
     public void save(ModeloDTO modeloDTO) throws AlreadyExistingException {
@@ -32,19 +34,28 @@ public class ModeloService implements IModelo{
     }
 
     @Override
-    public Optional<Modelo> getModeloById(int id) throws NotFoundException {
-        return repo.findById(id);
+    public Optional<Modelo> getModeloById(int id) throws NoSuchElementException {
+        Optional<Modelo> opModelo = repo.findById(id);
+
+        if(opModelo.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return opModelo;
     }
 
     @Override
-    public void updateModelo(Modelo modelo, int id) throws NotFoundException {
+    public void updateModelo(Modelo modelo, int id) throws NoSuchElementException {
+        if(!repo.existsById(id)) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
         modelo.setId(id);
         repo.save(modelo);
     }
 
     @Override
-    public Optional<Modelo> removeModeloById(int id) throws NotFoundException {
+    public Optional<Modelo> removeModeloById(int id) throws NoSuchElementException {
         Optional<Modelo> modelo = this.getModeloById(id);
+
+        if(modelo.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
         repo.deleteById(id);
 
         return modelo;

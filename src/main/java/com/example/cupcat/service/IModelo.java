@@ -7,12 +7,13 @@ import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public interface IModelo {
     void save(ModeloDTO modeloDTO) throws AlreadyExistingException;
     List<Modelo> getAll();
-    Optional<Modelo> getModeloById(int id) throws NotFoundException;
-    void updateModelo(Modelo modelo, int id) throws NotFoundException;
-    Optional<Modelo> removeModeloById(int id) throws NotFoundException;
+    Optional<Modelo> getModeloById(int id) throws NoSuchElementException;
+    void updateModelo(Modelo modelo, int id) throws NoSuchElementException;
+    Optional<Modelo> removeModeloById(int id) throws NoSuchElementException;
 }
