@@ -22,7 +22,7 @@ public class CategoriaController {
         return new ResponseEntity<>(categoriaService.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(consumes = {"application/json"})
     @ResponseStatus(HttpStatus.CREATED)
     public void saveCategoria(@Valid @RequestBody Categoria categoria){
         categoriaService.save(categoria);
