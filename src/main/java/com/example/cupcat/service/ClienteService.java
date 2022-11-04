@@ -21,6 +21,7 @@ public class ClienteService implements ICliente{
 
     @Override
     public void save(Cliente cliente) throws AlreadyExistingException {
+        if(!repo.existsById(cliente.getId())) throw new AlreadyExistingException("Cliente já cadastrado");
         repo.save(cliente);
     }
 
