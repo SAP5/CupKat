@@ -25,8 +25,8 @@ public class ModeloController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveModelo(@Valid @RequestBody Modelo modelo){
-        modeloService.save(modelo);
+    public void saveModelo(@Valid @RequestBody ModeloDTO modeloDTO){
+        modeloService.save(modeloDTO);
     }
 
     @GetMapping("/by_id/{id}")

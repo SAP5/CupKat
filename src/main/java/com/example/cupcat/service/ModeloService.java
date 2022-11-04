@@ -1,5 +1,6 @@
 package com.example.cupcat.service;
 
+import com.example.cupcat.dto.ModeloDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
 import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Categoria;
@@ -19,7 +20,9 @@ public class ModeloService implements IModelo{
     private final ModeloRepo repo;
 
     @Override
-    public void save(Modelo modelo) throws AlreadyExistingException {
+    public void save(ModeloDTO modeloDTO) throws AlreadyExistingException {
+        Modelo modelo = new Modelo(modeloDTO);
+
         repo.save(modelo);
     }
 
