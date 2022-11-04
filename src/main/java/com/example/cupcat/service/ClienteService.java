@@ -19,14 +19,15 @@ import java.util.stream.Collectors;
 public class ClienteService implements ICliente{
     private final ClienteRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Cliente não encontrado!";
+    private static final String MSG_ERROR_ALREADY_EXISTING = "Cliente já cadastrado!";
 
     @Override
     public void save(Cliente cliente) throws AlreadyExistingException, DataIntegrityViolationException {
         try{
-            if(cliente.getId() != 0) throw new AlreadyExistingException("Cliente já cadastrado");
+            if(cliente.getId() != 0) throw new AlreadyExistingException(MSG_ERROR_ALREADY_EXISTING);
             repo.save(cliente);
         } catch (DataIntegrityViolationException ex){
-            throw new AlreadyExistingException("Cliente já cadastrado");
+            throw new AlreadyExistingException(MSG_ERROR_ALREADY_EXISTING);
         }
     }
 
