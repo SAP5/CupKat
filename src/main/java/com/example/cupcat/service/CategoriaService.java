@@ -18,7 +18,7 @@ public class CategoriaService implements ICategoria{
     private static final String MSG_ERROR_NOT_FOUND = "Categoria não encontrada!";
 
     @Override
-    public void save(CategoriaDTO categoriaDTO) throws AlreadyExistingException {
+    public void save(CategoriaDTO categoriaDTO){
         Categoria categoria = new Categoria(categoriaDTO);
         repo.save(categoria);
     }
