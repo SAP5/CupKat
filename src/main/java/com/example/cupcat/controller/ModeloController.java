@@ -6,6 +6,7 @@ import com.example.cupcat.model.Modelo;
 import com.example.cupcat.service.IModelo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,8 @@ public class ModeloController {
         return new ResponseEntity<>(modeloService.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public void saveModelo(@Valid @RequestBody ModeloDTO modeloDTO){
         modeloService.save(modeloDTO);
