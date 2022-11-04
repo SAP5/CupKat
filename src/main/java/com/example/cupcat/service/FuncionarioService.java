@@ -8,6 +8,7 @@ import com.example.cupcat.model.Cliente;
 import com.example.cupcat.model.Funcionario;
 import com.example.cupcat.repository.FuncionarioRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,10 +21,16 @@ import java.util.stream.Collectors;
 public class FuncionarioService implements IFuncionario{
     private final FuncionarioRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Funcionario não encontrado!";
+    private static final String MSG_ERROR_ALREADY_EXISTING = "Funcionario já cadastrado!";
 
     @Override
-    public void save(Funcionario funcionario) throws AlreadyExistingException {
-        repo.save(funcionario);
+    public void save(Funcionario funcionario) throws AlreadyExistingException, DataIntegrityViolationException {
+        try{
+            if(repo.existsById(funcionario.getId())) throw new AlreadyExistingException(MSG_ERROR_ALREADY_EXISTING);
+            repo.save(funcionario);
+        }catch (DataIntegrityViolationException ex){
+            throw new AlreadyExistingException(MSG_ERROR_ALREADY_EXISTING);
+        }
     }
 
     @Override
