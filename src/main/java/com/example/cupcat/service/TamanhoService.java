@@ -5,6 +5,7 @@ import com.example.cupcat.repository.TamanhoRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,5 +16,10 @@ public class TamanhoService implements ITamanho{
     @Override
     public Optional<Tamanho> getTamanhoById(int id) {
         return repo.findById(id);
+    }
+
+    @Override
+    public List<Tamanho> getAll() {
+        return repo.findAll();
     }
 }
