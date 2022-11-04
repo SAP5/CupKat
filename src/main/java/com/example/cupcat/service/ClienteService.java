@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ClienteService implements ICliente{
     private final ClienteRepo repo;
+    private static final String MSG_ERROR_NOT_FOUND = "Cliente não encontrado!";
 
     @Override
     public void save(Cliente cliente) throws AlreadyExistingException {
@@ -28,18 +30,26 @@ public class ClienteService implements ICliente{
     }
 
     @Override
-    public Optional<ClienteDTO> getClienteById(int id) throws NotFoundException {
-        return Optional.of(new ClienteDTO(repo.findById(id).get()));
+    public Optional<ClienteDTO> getClienteById(int id) throws NoSuchElementException {
+        Optional<Cliente> opCliente = repo.findById(id);
+
+        if(opCliente.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return Optional.of(new ClienteDTO(opCliente.get()));
     }
 
     @Override
-    public void updateCliente(Cliente cliente) throws NotFoundException {
+    public void updateCliente(Cliente cliente) throws NoSuchElementException {
+        if(!repo.existsById(cliente.getId())) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
         repo.save(cliente);
     }
 
     @Override
-    public Optional<ClienteDTO> removeClienteById(int id) throws NotFoundException {
+    public Optional<ClienteDTO> removeClienteById(int id) throws NoSuchElementException {
         Optional<ClienteDTO> clienteDTO = this.getClienteById(id);
+
+        if(clienteDTO.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
         repo.deleteById(id);
 
         return clienteDTO;
