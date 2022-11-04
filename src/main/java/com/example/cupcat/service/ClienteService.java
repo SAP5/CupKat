@@ -6,6 +6,7 @@ import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Cliente;
 import com.example.cupcat.repository.ClienteRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,9 +21,13 @@ public class ClienteService implements ICliente{
     private static final String MSG_ERROR_NOT_FOUND = "Cliente não encontrado!";
 
     @Override
-    public void save(Cliente cliente) throws AlreadyExistingException {
-        if(!repo.existsById(cliente.getId())) throw new AlreadyExistingException("Cliente já cadastrado");
-        repo.save(cliente);
+    public void save(Cliente cliente) throws AlreadyExistingException, DataIntegrityViolationException {
+        try{
+            if(cliente.getId() != 0) throw new AlreadyExistingException("Cliente já cadastrado");
+            repo.save(cliente);
+        } catch (DataIntegrityViolationException ex){
+            throw new AlreadyExistingException("Cliente já cadastrado");
+        }
     }
 
     @Override
