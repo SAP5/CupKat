@@ -6,16 +6,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class CorService implements ICor{
     private final CorRepo repo;
+    private static final String MSG_ERROR_NOT_FOUND = "Cor não encontrada!";
 
     @Override
-    public Optional<Cor> getCorById(int id) {
-        return repo.findById(id);
+    public Optional<Cor> getCorById(int id) throws NoSuchElementException {
+        Optional<Cor> opCor = repo.findById(id);
+
+        if(opCor.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return opCor;
     }
 
     @Override
