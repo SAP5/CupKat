@@ -147,7 +147,7 @@ GET /cores/
 
 | Descrição                                                                |
 |:-------------------------------------------------------------------------|
-| Será retornado um array com todos as cores cadastradas no banco de dados |
+| Será retornado um array com todas as cores cadastradas no banco de dados |
 
 
 **Retorno em caso de sucesso**
@@ -233,7 +233,7 @@ GET /categorias/
 
 | Descrição                                                                     |
 |:------------------------------------------------------------------------------|
-| Será retornado um array com todos as categorias cadastradas no banco de dados |
+| Será retornado um array com todas as categorias cadastradas no banco de dados |
 
 
 **Retorno em caso de sucesso**
@@ -319,17 +319,6 @@ POST /categorias/
 status: 201 CREATED
 ```
 
-**Retorno em caso de Id não encontrado**
-
-```json
-{
-	"title": "Objeto não encontrado",
-	"status": 404,
-	"message": "Categoria não encontrada!",
-	"timeStamp": "2022-11-07T15:20:20.073393"
-}
-```
-
 ### Atualizar uma Categoria pelo id
 
 ```http
@@ -392,6 +381,183 @@ DELETE /categorias/delete/{id}
 {
   "titulo" : "Vestuario",
   "descricao" : "Roupas e acessórios"
+}
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Categoria não encontrada!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+## Modelo 👚👕
+
+### Recuperar todos os Modelos
+
+```http
+GET /modelos/
+```
+
+| Descrição                                                                  |
+|:---------------------------------------------------------------------------|
+| Será retornado um array com todos os modelos cadastrados no banco de dados |
+
+
+**Retorno em caso de sucesso**
+
+```json
+[
+  {
+    "id": 3,
+    "created_at": null,
+    "updated_at": null,
+    "status": 1,
+    "titulo": "Teste",
+    "precoCusto": 123.50,
+    "descricao": "testettetetetetetet",
+    "produtos": []
+  }
+]
+```
+
+### Recuperar um Modelo pelo id
+
+```http
+GET /modelos/by_id/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                  |
+|:-----------------------------------------------------------|
+| Será retornado o modelo com o id correspondente ao enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+{
+  "id": 3,
+  "created_at": null,
+  "updated_at": null,
+  "status": 1,
+  "titulo": "Teste",
+  "precoCusto": 123.50,
+  "descricao": "testettetetetetetet",
+  "produtos": []
+}
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Modelo não encontrado!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+### Cadastrar um Modelo
+
+```http
+POST /modelos/
+```
+
+| Corpo da requisição             | Tipo       | Descrição                                               |
+|:--------------------------------| :--------- | :------------------------------------------------------ |
+| `titulo, precoCusto, descricao` | `json`     | **Obrigatório**. Todos os campos no corpo da requisição |
+
+| Descrição                                                          |
+|:-------------------------------------------------------------------|
+| Será retornado um status correspondente ao resultado da requisição |
+
+**Formato do corpo da requisição**
+```json
+{
+  "titulo" : "Teste",
+  "precoCusto" : 123.5,
+  "descricao" : "testettetetetetetet"
+}
+```
+
+**Retorno em caso de sucesso**
+
+```
+status: 201 CREATED
+```
+
+### Atualizar um Modelo pelo id
+
+```http
+PUT /modelos/by_id/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Corpo da requisição             | Tipo       | Descrição                                               |
+|:--------------------------------| :--------- | :------------------------------------------------------ |
+| `titulo, precoCusto, descricao` | `json`     | **Obrigatório**. Todos os campos no corpo da requisição |
+
+| Descrição                                                          |
+|:-------------------------------------------------------------------|
+| Será retornado um status correspondente ao resultado da requisição |
+
+**Formato do corpo da requisição**
+```json
+{
+  "titulo" : "Teste",
+  "precoCusto" : 123.5,
+  "descricao" : "testettetetetetetet"
+}
+```
+
+**Retorno em caso de sucesso**
+```
+status: 200 OK
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Categoria não encontrada!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+### Deletar um Modelo pelo id
+
+```http
+DELETE /modelos/delete/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                     |
+|:--------------------------------------------------------------|
+| Será retornado a categoria com o id correspondente ao enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+{
+  "titulo": "Teste",
+  "precoCusto": 123.50,
+  "descricao": "testettetetetetetet"
 }
 ```
 
