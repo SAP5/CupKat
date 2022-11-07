@@ -18,7 +18,7 @@ Projeto feito durante o 3˚ semestre do curso de Desenvolvimento de Software Mul
   - POO
   - JAVA
   - Spring Boot
-  - API REST e RESTfull
+  - API RESTful
   - JSON
   - Arquitetura MVC
   - Conexão com banco de dados MySQL
