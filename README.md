@@ -571,3 +571,172 @@ DELETE /modelos/delete/{id}
 	"timeStamp": "2022-11-07T15:20:20.073393"
 }
 ```
+
+## Cliente 👩🏼👩🏽‍🦱👨🏾👨🏻‍🦱
+
+### Recuperar todos os Clientes
+
+```http
+GET /clientes/
+```
+
+| Descrição                                                                   |
+|:----------------------------------------------------------------------------|
+| Será retornado um array com todos os clientes cadastrados no banco de dados |
+
+
+**Retorno em caso de sucesso**
+
+```json
+[
+  {
+    "id": 1,
+    "status": 1,
+    "nome": "Giovanna"
+  }
+]
+```
+
+### Recuperar um Cliente pelo id
+
+```http
+GET /clientes/by_id/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                   |
+|:------------------------------------------------------------|
+| Será retornado o cliente com o id correspondente ao enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+{
+  "id": 1,
+  "status": 1,
+  "nome": "Giovanna"
+}
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Cliente não encontrado!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+### Cadastrar um Cliente
+
+```http
+POST /clientes/
+```
+
+| Corpo da requisição       | Tipo       | Descrição                                               |
+|:--------------------------| :--------- | :------------------------------------------------------ |
+| `nome, cpf, email, senha` | `json`     | **Obrigatório**. Todos os campos no corpo da requisição |
+
+| Descrição                                                          |
+|:-------------------------------------------------------------------|
+| Será retornado um status correspondente ao resultado da requisição |
+
+**Formato do corpo da requisição**
+```json
+{
+  "nome" : "Giovanna",
+  "cpf" : "000.000.001-97",
+  "email" : "teste23@gmail.com",
+  "senha" : "Teste2@124"
+}
+```
+
+**Retorno em caso de sucesso**
+
+```
+status: 201 CREATED
+```
+
+### Atualizar um Cliente pelo id
+
+```http
+PUT /clientes/by_id/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Corpo da requisição       | Tipo       | Descrição                                               |
+|:--------------------------| :--------- | :------------------------------------------------------ |
+| `nome, cpf, email, senha` | `json`     | **Obrigatório**. Todos os campos no corpo da requisição |
+
+| Descrição                                                          |
+|:-------------------------------------------------------------------|
+| Será retornado um status correspondente ao resultado da requisição |
+
+**Formato do corpo da requisição**
+```json
+{
+  "nome" : "teste 2",
+  "cpf" : "000.000.001-91",
+  "email" : "teste@teste.com",
+  "senha" : "Teste@123"
+}
+```
+
+**Retorno em caso de sucesso**
+```
+status: 200 OK
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Cliente não encontrado!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+### Deletar um Cliente pelo id
+
+```http
+DELETE /modelos/delete/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                   |
+|:------------------------------------------------------------|
+| Será retornado a cliente com o id correspondente ao enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+{
+  "id": 1,
+  "status": 1,
+  "nome": "Giovanna"
+}
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Cliente não encontrado!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
