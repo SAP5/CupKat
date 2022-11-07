@@ -532,7 +532,7 @@ status: 200 OK
 {
 	"title": "Objeto não encontrado",
 	"status": 404,
-	"message": "Categoria não encontrada!",
+	"message": "Modelo não encontrado!",
 	"timeStamp": "2022-11-07T15:20:20.073393"
 }
 ```
@@ -567,7 +567,7 @@ DELETE /modelos/delete/{id}
 {
 	"title": "Objeto não encontrado",
 	"status": 404,
-	"message": "Categoria não encontrada!",
+	"message": "Modelo não encontrado!",
 	"timeStamp": "2022-11-07T15:20:20.073393"
 }
 ```
