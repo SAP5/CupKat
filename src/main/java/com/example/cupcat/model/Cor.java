@@ -19,10 +19,10 @@ public class Cor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String nome;
 
-    @Column
+    @Column(nullable = false, unique = true)
     private String cor;
 
     @ManyToMany(mappedBy = "cores")
