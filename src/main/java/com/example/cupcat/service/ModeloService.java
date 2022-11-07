@@ -8,6 +8,7 @@ import com.example.cupcat.model.Modelo;
 import com.example.cupcat.repository.ModeloRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -51,13 +52,17 @@ public class ModeloService implements IModelo{
     }
 
     @Override
-    public Optional<Modelo> removeModeloById(int id) throws NoSuchElementException {
-        Optional<Modelo> modelo = this.getModeloById(id);
+    public Optional<Modelo> removeModeloById(int id) throws NoSuchElementException, DataIntegrityViolationException {
+        try{
+            Optional<Modelo> modelo = this.getModeloById(id);
 
-        if(modelo.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+            if(modelo.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
 
-        repo.deleteById(id);
+            repo.deleteById(id);
 
-        return modelo;
+            return modelo;
+        }catch (DataIntegrityViolationException ex){
+            throw new DataIntegrityViolationException("Você não pode deletar um modelo que tenha produtos associados!");
+        }
     }
 }

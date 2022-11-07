@@ -5,6 +5,7 @@ import com.example.cupcat.exception.AlreadyExistingException;
 import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,5 +16,5 @@ public interface IModelo {
     List<Modelo> getAll();
     Optional<Modelo> getModeloById(int id) throws NoSuchElementException;
     void updateModelo(Modelo modelo, int id) throws NoSuchElementException;
-    Optional<Modelo> removeModeloById(int id) throws NoSuchElementException;
+    Optional<Modelo> removeModeloById(int id) throws NoSuchElementException, DataIntegrityViolationException;
 }

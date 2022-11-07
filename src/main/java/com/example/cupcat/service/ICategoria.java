@@ -2,6 +2,7 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.dto.CategoriaDTO;
 import com.example.cupcat.model.Categoria;
+import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -12,5 +13,5 @@ public interface ICategoria {
     List<Categoria> getAll();
     Optional<Categoria> getCategoriaById(int id) throws NoSuchElementException;
     void updateCategoria(CategoriaDTO categoriaDTO, int id) throws NoSuchElementException;
-    Optional<Categoria> removeCategoriaById(int id) throws NoSuchElementException;
+    Optional<Categoria> removeCategoriaById(int id) throws NoSuchElementException, DataIntegrityViolationException;
 }

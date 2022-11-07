@@ -5,6 +5,7 @@ import com.example.cupcat.exception.AlreadyExistingException;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.repository.CategoriaRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,13 +48,17 @@ public class CategoriaService implements ICategoria{
     }
 
     @Override
-    public Optional<Categoria> removeCategoriaById(int id) throws NoSuchElementException {
-        Optional<Categoria> categoria = this.getCategoriaById(id);
+    public Optional<Categoria> removeCategoriaById(int id) throws NoSuchElementException, DataIntegrityViolationException {
+        try{
+            Optional<Categoria> categoria = this.getCategoriaById(id);
 
-        if(categoria.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+            if(categoria.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
 
-        repo.deleteById(id);
+            repo.deleteById(id);
 
-        return categoria;
+            return categoria;
+        }catch (DataIntegrityViolationException ex){
+            throw new DataIntegrityViolationException("Você não pode deletar uma categoria que tenha produtos associados!");
+        }
     }
 }

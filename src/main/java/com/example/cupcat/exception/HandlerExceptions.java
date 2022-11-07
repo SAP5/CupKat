@@ -1,5 +1,6 @@
 package com.example.cupcat.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -94,6 +95,18 @@ public class HandlerExceptions {
                         .map(err -> err.getDefaultMessage())
                         .collect(Collectors.joining(", ")))
                 .timestamp(LocalDateTime.now())
+                .build(),
+                HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ExceptionDetails> buildDataIntegrityViolationException(DataIntegrityViolationException ex){
+        return new ResponseEntity<>(ExceptionDetails.builder()
+                .title("Operação inválida")
+                .message(ex.getMessage())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .timeStamp(LocalDateTime.now())
                 .build(),
                 HttpStatus.BAD_REQUEST
         );
