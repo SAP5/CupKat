@@ -222,3 +222,186 @@ GET /cores/{id}
 	"timeStamp": "2022-11-07T15:20:20.073393"
 }
 ```
+
+## Categoria 👜
+
+### Recuperar todas as Categorias
+
+```http
+GET /categorias/
+```
+
+| Descrição                                                                     |
+|:------------------------------------------------------------------------------|
+| Será retornado um array com todos as categorias cadastradas no banco de dados |
+
+
+**Retorno em caso de sucesso**
+
+```json
+[
+  {
+    "id": 5,
+    "created_at": null,
+    "updated_at": null,
+    "status": 1,
+    "titulo": "Teste 2",
+    "descricao": "testettetetetetetet",
+    "produtos": []
+  }
+]
+```
+
+### Recuperar uma Categoria pelo id
+
+```http
+GET /categorias/by_id/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                     |
+|:--------------------------------------------------------------|
+| Será retornado a categoria com o id correspondente ao enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+  {
+  "id": 5,
+  "created_at": null,
+  "updated_at": null,
+  "status": 1,
+  "titulo": "Teste 2",
+  "descricao": "testettetetetetetet",
+  "produtos": []
+}
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Categoria não encontrada!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+### Cadastrar uma Categoria
+
+```http
+POST /categorias/
+```
+
+| Corpo da requisição | Tipo       | Descrição                                               |
+|:--------------------| :--------- | :------------------------------------------------------ |
+| `titulo, descricao` | `json`     | **Obrigatório**. Todos os campos no corpo da requisição |
+
+| Descrição                                                          |
+|:-------------------------------------------------------------------|
+| Será retornado um status correspondente ao resultado da requisição |
+
+**Formato do corpo da requisição**
+```json
+{
+  "titulo": "Teste 2",
+  "descricao": "testettetetetetetet"
+}
+```
+
+**Retorno em caso de sucesso**
+
+```
+status: 201 CREATED
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Categoria não encontrada!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+### Atualizar uma Categoria pelo id
+
+```http
+PUT /categorias/by_id/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Corpo da requisição | Tipo       | Descrição                                               |
+|:--------------------| :--------- | :------------------------------------------------------ |
+| `titulo, descricao` | `json`     | **Obrigatório**. Todos os campos no corpo da requisição |
+
+| Descrição                                                          |
+|:-------------------------------------------------------------------|
+| Será retornado um status correspondente ao resultado da requisição |
+
+**Formato do corpo da requisição**
+```json
+{
+  "titulo" : "Vestuario",
+  "descricao" : "Roupas e acessórios"
+}
+```
+
+**Retorno em caso de sucesso**
+```
+status: 200 OK
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Categoria não encontrada!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
+
+### Deletar uma Categoria pelo id
+
+```http
+DELETE /categorias/delete/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                     |
+|:--------------------------------------------------------------|
+| Será retornado a categoria com o id correspondente ao enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+{
+  "titulo" : "Vestuario",
+  "descricao" : "Roupas e acessórios"
+}
+```
+
+**Retorno em caso de Id não encontrado**
+
+```json
+{
+	"title": "Objeto não encontrado",
+	"status": 404,
+	"message": "Categoria não encontrada!",
+	"timeStamp": "2022-11-07T15:20:20.073393"
+}
+```
