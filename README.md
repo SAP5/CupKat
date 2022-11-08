@@ -795,9 +795,10 @@ GET /funcionarios/
 ```json
 [
   {
-    "id": 2,
+    "id": 1,
     "status": 1,
-    "nome": "Giovanna"
+    "nome": "Giovanna",
+    "email": "teste23@gmail.com"
   }
 ]
 ```
@@ -820,9 +821,10 @@ GET /funcionarios/by_id/{id}
 
 ```json
 {
-  "id": 2,
+  "id": 1,
   "status": 1,
-  "nome": "Giovanna"
+  "nome": "Giovanna",
+  "email": "teste23@gmail.com"
 }
 ```
 
@@ -835,6 +837,39 @@ GET /funcionarios/by_id/{id}
 	"message": "Funcionário não encontrado!",
 	"timeStamp": "2022-11-07T15:20:20.073393"
 }
+```
+
+### Recuperar um Funcionário pelo id
+
+```http
+GET /funcionarios/by_id/{id}
+```
+
+| Parâmetro   | Tipo       | Descrição                                             |
+| :---------- | :--------- | :---------------------------------------------------- |
+| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                                                         |
+|:--------------------------------------------------------------------------------------------------|
+| Será retornada uma lista de funcionários cujo email contenha alguma correspondencia com o enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+[
+  {
+    "id": 1,
+    "status": 1,
+    "nome": "Giovanna",
+    "email": "teste23@gmail.com"
+  }
+]
+```
+
+**Retorno em caso de correspondência não encontrada**
+
+```json
+[]
 ```
 
 ### Cadastrar um Funcionário
@@ -929,7 +964,8 @@ DELETE /funcionarios/delete/{id}
 {
   "id": 1,
   "status": 1,
-  "nome": "Giovanna"
+  "nome": "Giovanna",
+  "email": "teste23@gmail.com"
 }
 ```
 
