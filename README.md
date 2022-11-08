@@ -592,7 +592,8 @@ GET /clientes/
   {
     "id": 1,
     "status": 1,
-    "nome": "Giovanna"
+    "nome": "Giovanna",
+    "email": "teste23@gmail.com"
   }
 ]
 ```
@@ -617,7 +618,8 @@ GET /clientes/by_id/{id}
 {
   "id": 1,
   "status": 1,
-  "nome": "Giovanna"
+  "nome": "Giovanna",
+  "email": "teste23@gmail.com"
 }
 ```
 
@@ -759,7 +761,8 @@ DELETE /clientes/delete/{id}
 {
   "id": 1,
   "status": 1,
-  "nome": "Giovanna"
+  "nome": "Giovanna",
+  "email": "teste23@gmail.com"
 }
 ```
 
