@@ -15,4 +15,5 @@ public interface IFuncionario {
     Optional<FuncionarioDTO> getFuncionarioById(int id) throws NoSuchElementException;
     void updateFuncionario(Funcionario funcionario) throws NoSuchElementException;
     Optional<FuncionarioDTO> removeFuncionarioById(int id) throws NoSuchElementException;
+    List<FuncionarioDTO> getByEmail(String email);
 }

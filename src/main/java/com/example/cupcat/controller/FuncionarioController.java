@@ -36,6 +36,11 @@ public class FuncionarioController {
         return new ResponseEntity<>(funcionarioService.getFuncionarioById(id).get(), HttpStatus.OK);
     }
 
+    @GetMapping("/by_email/{email}")
+    public ResponseEntity<List<FuncionarioDTO>> getFuncionarioByEmail(@PathVariable String email){
+        return new ResponseEntity<>(funcionarioService.getByEmail(email), HttpStatus.OK);
+    }
+
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateFuncionario(@RequestBody Funcionario funcionario, @PathVariable int id){

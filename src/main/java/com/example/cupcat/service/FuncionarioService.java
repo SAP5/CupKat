@@ -64,4 +64,9 @@ public class FuncionarioService implements IFuncionario{
 
         return funcDTO;
     }
+
+    @Override
+    public List<FuncionarioDTO> getByEmail(String email) {
+        return repo.findByEmailContaining(email).stream().map(FuncionarioDTO::new).collect(Collectors.toList());
+    }
 }
