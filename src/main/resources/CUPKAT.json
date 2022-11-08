@@ -1,536 +1,836 @@
 {
 	"info": {
 		"_postman_id": "dafc37bd-dbad-4059-aa22-deaa14d044fe",
-		"name": "FATEC",
+		"name": "CupKat",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19488930"
 	},
 	"item": [
 		{
-			"name": "CUPKAT",
+			"name": "Cliente",
 			"item": [
 				{
-					"name": "Cliente",
-					"item": [
-						{
-							"name": "Cliente - save",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"nome\" : \"teste 2\",\n    \"cpf\" : \"000.000.001-90\",\n    \"email\" : \"teste@teste2.com\",\n    \"senha\" : \"Teste@123\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/clientes/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"clientes",
-										""
-									]
+					"name": "Cliente - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"Giovanna\",\n    \"cpf\" : \"000.000.001-98\",\n    \"email\" : \"teste21@gmail.com\",\n    \"senha\" : \"Teste2@124\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							},
-							"response": []
+							}
 						},
-						{
-							"name": "Cliente - all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/clientes/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"clientes",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Cliente - id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/clientes/by_id/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"clientes",
-										"by_id",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Categoria - delete",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/clientes/delete/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"clientes",
-										"delete",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Categoria - update",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"nome\" : \"teste 2\",\n    \"cpf\" : \"000.000.001-91\",\n    \"email\" : \"teste@teste.com\",\n    \"senha\" : \"Teste@123\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/clientes/update/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"clientes",
-										"update",
-										"1"
-									]
-								}
-							},
-							"response": []
+						"url": {
+							"raw": "{{host}}/clientes/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clientes",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
 				{
-					"name": "Categoria",
-					"item": [
-						{
-							"name": "Categoria - save",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"titulo\" : \"Teste 2\",\n    \"descricao\" : \"testettetetetetetet\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/categorias/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"categorias",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Categoria - all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/categorias/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"categorias",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Categoria - id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/categorias/by_id/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"categorias",
-										"by_id",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Categoria - delete",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/categorias/delete/3",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"categorias",
-										"delete",
-										"3"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Categoria - update",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"titulo\" : \"Vestuario\",\n    \"descricao\" : \"Roupas e acessórios\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/categorias/update/2",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"categorias",
-										"update",
-										"2"
-									]
-								}
-							},
-							"response": []
+					"name": "Cliente - all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/clientes/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clientes",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
 				{
-					"name": "Modelo",
-					"item": [
-						{
-							"name": "Modelo - save",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"titulo\" : \"Teste\",\n    \"precoCusto\" : 123.5,\n    \"descricao\" : \"testettetetetetetet\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/modelos/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"modelos",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Modelo - all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/modelos/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"modelos",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Modelo - id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/modelos/by_id/2",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"modelos",
-										"by_id",
-										"2"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Modelo - delete",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/modelos/delete/2",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"modelos",
-										"delete",
-										"2"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Modelo - update",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"titulo\" : \"Cama\",\n    \"precoCusto\" : 123.5,\n    \"descricao\" : \"testettetetetetetet\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/modelos/update/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"modelos",
-										"update",
-										"1"
-									]
-								}
-							},
-							"response": []
+					"name": "Cliente - id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/clientes/by_id/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clientes",
+								"by_id",
+								"1"
+							]
 						}
-					]
+					},
+					"response": []
 				},
 				{
-					"name": "Produto",
-					"item": [
-						{
-							"name": "Produto - save",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"nome\" : \"Teste\",\n    \"descricao\" : \"testettetetetetetet\",\n    \"precoCusto\" : 10.5,\n    \"lucro\" : 10.0,\n    \"estoque\" : 10,\n    \"cores\" : [\n        \"Amarelo\",\n        \"Lilas\",\n        \"Azul\"\n    ],\n    \"tamanhos\" : [\n        \"Médio\",\n        \"Pequeno\"\n    ],\n    \"categorias\" : [1],\n    \"modelo\" : 1\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/produtos/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Produto - all",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/produtos/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Produto - id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/produtos/by_id/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										"by_id",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Produto - nome",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/produtos/by_name/Teste",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										"by_name",
-										"Teste"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Produto - categoria",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/produtos/by_category/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										"by_category",
-										"1"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Produto - modelo",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/produtos/by_modelo/0",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										"by_modelo",
-										"0"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Produto - delete",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/produtos/delete/2",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										"delete",
-										"2"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Produto - update",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"nome\" : \"Teste 2\",\n    \"descricao\" : \"testettetetetetetet\",\n    \"precoCusto\" : 10.5,\n    \"lucro\" : 10.0,\n    \"estoque\" : 10,\n    \"cores\" : [\n        \"Amarelo\",\n        \"Lilas\",\n        \"Azul\"\n    ],\n    \"tamanhos\" : [\n        \"Médio\",\n        \"Pequeno\"\n    ],\n    \"categorias\" : [1],\n    \"modelo\" : 1\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/produtos/update/1",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"produtos",
-										"update",
-										"1"
-									]
-								}
-							},
-							"response": []
+					"name": "Cliente - email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/clientes/by_email/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clientes",
+								"by_email",
+								"test"
+							]
 						}
-					]
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente - delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/clientes/delete/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clientes",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente - update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"teste 2\",\n    \"cpf\" : \"000.000.001-91\",\n    \"email\" : \"teste@teste.com\",\n    \"senha\" : \"Teste@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/clientes/update/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"clientes",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "Funcionario",
+			"item": [
+				{
+					"name": "Funcionario - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"Giovanna\",\n    \"email\" : \"teste23@gmail.com\",\n    \"senha\" : \"Teste01@123$\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/funcionarios/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"funcionarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Funcionario - all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/funcionarios/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"funcionarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Funcionario - id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/funcionarios/by_id/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"funcionarios",
+								"by_id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Funcionario - email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/funcionarios/by_email/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"funcionarios",
+								"by_email",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Funcionario - delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/funcionarios/delete/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"funcionarios",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Funcionario - update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"teste 2\",\n    \"email\" : \"teste@teste.com\",\n    \"senha\" : \"Teste@123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/funcionarios/update/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"funcionarios",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Categoria - save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Transfer-Encoding",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"titulo\": \"Teste 2\",\n\t\"descricao\": \"testettetetetetetet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categorias/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categorias",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria - all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categorias/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categorias",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria - id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categorias/by_id/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categorias",
+								"by_id",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria - delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categorias/delete/6",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categorias",
+								"delete",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categoria - update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\" : \"Vestuario\",\n    \"descricao\" : \"Roupas e acessórios\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categorias/update/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categorias",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modelo",
+			"item": [
+				{
+					"name": "Modelo - save",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\" : \"Teste\",\n    \"precoCusto\" : 123.5,\n    \"descricao\" : \"testettetetetetetet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/modelos/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"modelos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modelo - all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/modelos/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"modelos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modelo - id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/modelos/by_id/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"modelos",
+								"by_id",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modelo - delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/modelos/delete/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"modelos",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modelo - update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\" : \"Cama\",\n    \"precoCusto\" : 123.5,\n    \"descricao\" : \"testettetetetetetet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/modelos/update/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"modelos",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Produto - save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\" : \"abobrinha\",\n    \"descricao\" : \"testettetetetetetet\",\n    \"precoCusto\" : 10.5,\n    \"lucro\" : 10.0,\n    \"estoque\" : 10,\n    \"cores\" : [1, 2, 3],\n    \"tamanhos\" : [1, 2],\n    \"categorias\" : [5],\n    \"modelo\" : 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/produtos/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produtos/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produtos/by_id/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								"by_id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - nome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produtos/by_name/Teste 21",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								"by_name",
+								"Teste 21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produtos/by_category/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								"by_category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - modelo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produtos/by_modelo/0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								"by_modelo",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produtos/delete/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"Teste 2\",\n    \"descricao\" : \"a\",\n    \"precoCusto\" : 10.5,\n    \"lucro\" : 10.0,\n    \"estoque\" : 10,\n    \"cores\" : [1, 2, 3],\n    \"tamanhos\" : [1, 2],\n    \"categorias\" : [5],\n    \"modelo\" : 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/produtos/update/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produtos",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cor",
+			"item": [
+				{
+					"name": "Cor - all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cores/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cores",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cor - id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cores/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cores",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tamanho",
+			"item": [
+				{
+					"name": "Tamanho - all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tamanhos/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tamanhos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tamanho - id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/tamanhos/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"tamanhos",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "cupkat-prod",
+			"value": "https://cupkat-prj.herokuapp.com",
+			"type": "string"
 		}
 	]
 }
