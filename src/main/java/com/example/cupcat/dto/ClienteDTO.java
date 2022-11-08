@@ -13,10 +13,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ClienteDTO extends ModelDTO implements Serializable {
     private String nome;
+    private String email;
 
     public ClienteDTO(Cliente cliente){
         this.setId(cliente.getId());
         this.setStatus(cliente.getStatus());
         this.setNome(cliente.getNome());
+        this.setEmail(cliente.getEmail());
     }
 }
