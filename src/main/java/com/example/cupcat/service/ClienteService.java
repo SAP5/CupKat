@@ -61,4 +61,9 @@ public class ClienteService implements ICliente{
 
         return clienteDTO;
     }
+
+    @Override
+    public List<ClienteDTO> getByEmail(String email) {
+        return repo.findByEmailContaining(email).stream().map(ClienteDTO::new).collect(Collectors.toList());
+    }
 }

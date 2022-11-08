@@ -33,6 +33,11 @@ public class ClienteController {
         return new ResponseEntity<>(clienteService.getClienteById(id).get(), HttpStatus.OK);
     }
 
+    @GetMapping("/by_email/{email}")
+    public ResponseEntity<List<ClienteDTO>> getClienteByEmail(@PathVariable String email){
+        return new ResponseEntity<>(clienteService.getByEmail(email), HttpStatus.OK);
+    }
+
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateCliente(@RequestBody Cliente cliente, @PathVariable int id){
