@@ -632,6 +632,39 @@ GET /clientes/by_id/{id}
 }
 ```
 
+### Recuperar uma lista de Clientes pelo email
+
+```http
+GET /clientes/by_email/{email}
+```
+
+| Parâmetro | Tipo     | Descrição                                             |
+|:----------|:---------| :---------------------------------------------------- |
+| `email`   | `String` | **Obrigatório**. Parâmetros devem ser passados na URL |
+
+| Descrição                                                                                     |
+|:----------------------------------------------------------------------------------------------|
+| Será retornada uma lista de clientes cujo email contenha alguma correspondencia com o enviado |
+
+**Retorno em caso de sucesso**
+
+```json
+[
+  {
+    "id": 1,
+    "status": 1,
+    "nome": "Giovanna",
+    "email": "teste23@gmail.com"
+  }
+]
+```
+
+**Retorno em caso de correspondência não encontrada**
+
+```json
+[]
+```
+
 ### Cadastrar um Cliente
 
 ```http
