@@ -1,8 +1,8 @@
 package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ProdutoDTO;
+import com.example.cupcat.dto.VProdutoDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Produto;
 import com.example.cupcat.repository.ProdutoRepo;
 import lombok.RequiredArgsConstructor;
@@ -31,8 +31,8 @@ public class ProdutoService implements IProduto{
     }
 
     @Override
-    public List<Produto> getAll() {
-        return repo.findAll();
+    public List<VProdutoDTO> getAll() {
+        return repo.findAll().stream().map(produto -> new VProdutoDTO(produto)).collect(Collectors.toList());
     }
 
     @Override
@@ -42,6 +42,15 @@ public class ProdutoService implements IProduto{
         if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
 
         return produto;
+    }
+
+    @Override
+    public VProdutoDTO getProdutoByIdView(int id) throws NoSuchElementException {
+        Optional<Produto> produto = repo.findById(id);
+
+        if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return new VProdutoDTO(produto.get());
     }
 
     @Override
@@ -66,8 +75,14 @@ public class ProdutoService implements IProduto{
     }
 
     @Override
-    public Optional<List<Produto>> getProdutosByNome(String nome) {
-        return repo.findByNomeContaining(nome);
+    public Optional<List<VProdutoDTO>> getProdutosByNome(String nome) {
+        return Optional.of(repo.findByNomeContaining(nome).get().stream()
+                .map(produto -> new VProdutoDTO(produto)).collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<Object> getCoresByProdutoId(int id) {
+        return repo.getCoresByIdProduto(id);
     }
 
 //    @Override

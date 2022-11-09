@@ -1,6 +1,7 @@
 package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.ProdutoDTO;
+import com.example.cupcat.dto.VProdutoDTO;
 import com.example.cupcat.model.Modelo;
 import com.example.cupcat.model.Produto;
 import com.example.cupcat.service.IProduto;
@@ -19,7 +20,7 @@ public class ProdutoController {
     private IProduto produtoService;
 
     @GetMapping
-    public ResponseEntity<List<Produto>> getAllProdutos(){
+    public ResponseEntity<List<VProdutoDTO>> getAllProdutos(){
         return new ResponseEntity<>(produtoService.getAll(), HttpStatus.OK);
     }
 
@@ -30,12 +31,12 @@ public class ProdutoController {
     }
 
     @GetMapping("/by_id/{id}")
-    public ResponseEntity<Produto> getProdutoById(@PathVariable int id){
-        return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
+    public ResponseEntity<VProdutoDTO> getProdutoById(@PathVariable int id){
+        return new ResponseEntity<>(produtoService.getProdutoByIdView(id), HttpStatus.OK);
     }
 
     @GetMapping("/by_name/{nome}")
-    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){
+    public ResponseEntity<List<VProdutoDTO>> getProdutosByNome(@PathVariable String nome){
         return new ResponseEntity<>(produtoService.getProdutosByNome(nome).get(), HttpStatus.OK);
     }
 //

@@ -10,10 +10,10 @@ import java.util.Set;
 
 @Getter
 @Setter
+@Entity
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class Cor implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,5 +34,11 @@ public class Cor implements Serializable {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public Cor(int id, String nome, String cor) {
+        this.id = id;
+        this.nome = nome;
+        this.cor = cor;
     }
 }
