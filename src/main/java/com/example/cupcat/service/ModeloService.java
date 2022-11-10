@@ -2,14 +2,10 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ModeloDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
-import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
-import com.example.cupcat.repository.ModeloRepo;
+import repository.ModeloRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

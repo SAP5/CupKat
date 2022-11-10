@@ -1,4 +1,4 @@
-package com.example.cupcat.repository;
+package repository;
 
 import com.example.cupcat.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;

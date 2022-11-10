@@ -1,12 +1,9 @@
 package com.example.cupcat.service;
 
-import com.example.cupcat.dto.ClienteDTO;
 import com.example.cupcat.dto.FuncionarioDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
-import com.example.cupcat.model.Cliente;
 import com.example.cupcat.model.Funcionario;
-import com.example.cupcat.repository.FuncionarioRepo;
+import repository.FuncionarioRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

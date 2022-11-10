@@ -2,9 +2,8 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ProdutoDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Produto;
-import com.example.cupcat.repository.ProdutoRepo;
+import repository.ProdutoRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

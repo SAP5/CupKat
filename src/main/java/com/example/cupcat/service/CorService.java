@@ -1,7 +1,7 @@
 package com.example.cupcat.service;
 
 import com.example.cupcat.model.Cor;
-import com.example.cupcat.repository.CorRepo;
+import repository.CorRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
