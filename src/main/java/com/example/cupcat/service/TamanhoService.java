@@ -1,7 +1,7 @@
 package com.example.cupcat.service;
 
 import com.example.cupcat.model.Tamanho;
-import repository.TamanhoRepo;
+import com.example.cupcat.repository.TamanhoRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

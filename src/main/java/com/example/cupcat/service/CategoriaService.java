@@ -2,7 +2,7 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.dto.CategoriaDTO;
 import com.example.cupcat.model.Categoria;
-import repository.CategoriaRepo;
+import com.example.cupcat.repository.CategoriaRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
