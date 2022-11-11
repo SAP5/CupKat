@@ -2,7 +2,7 @@ package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.ModeloDTO;
 import com.example.cupcat.model.Modelo;
-import com.example.cupcat.service.iinterface.IModelo;
+import com.example.cupcat.service.IModelo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

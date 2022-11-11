@@ -1,4 +1,4 @@
-package com.example.cupcat.exception.errors;
+package com.example.cupcat.exception;
 
 public class NotFoundException extends RuntimeException{
     public NotFoundException(String message) {
