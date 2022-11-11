@@ -2,6 +2,7 @@ package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.ProdutoDTO;
 import com.example.cupcat.model.Produto;
+import com.example.cupcat.service.IProduto;
 import com.example.cupcat.view.ProdutoView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

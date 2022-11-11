@@ -1,6 +1,7 @@
 package com.example.cupcat.controller;
 
 import com.example.cupcat.model.Cor;
+import com.example.cupcat.service.ICor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

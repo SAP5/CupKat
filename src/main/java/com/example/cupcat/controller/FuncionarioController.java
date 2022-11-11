@@ -2,6 +2,7 @@ package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.FuncionarioDTO;
 import com.example.cupcat.model.Funcionario;
+import com.example.cupcat.service.IFuncionario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
