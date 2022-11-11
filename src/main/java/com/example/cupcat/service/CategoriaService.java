@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CategoriaService implements ICategoria{
+public class CategoriaService implements ICategoria {
     private final CategoriaRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Categoria não encontrada!";
 

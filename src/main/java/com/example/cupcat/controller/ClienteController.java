@@ -2,7 +2,6 @@ package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.ClienteDTO;
 import com.example.cupcat.model.Cliente;
-import com.example.cupcat.service.ICliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

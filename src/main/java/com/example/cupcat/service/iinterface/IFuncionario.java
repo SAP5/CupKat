@@ -1,8 +1,7 @@
-package com.example.cupcat.service;
+package com.example.cupcat.service.iinterface;
 
 import com.example.cupcat.dto.FuncionarioDTO;
-import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
+import com.example.cupcat.exception.errors.AlreadyExistingException;
 import com.example.cupcat.model.Funcionario;
 
 import java.util.List;

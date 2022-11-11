@@ -1,4 +1,4 @@
-package com.example.cupcat.exception;
+package com.example.cupcat.exception.details;
 
 import lombok.Builder;
 import lombok.Data;

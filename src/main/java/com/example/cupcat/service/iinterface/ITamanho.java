@@ -1,4 +1,4 @@
-package com.example.cupcat.service;
+package com.example.cupcat.service.iinterface;
 
 import com.example.cupcat.model.Tamanho;
 

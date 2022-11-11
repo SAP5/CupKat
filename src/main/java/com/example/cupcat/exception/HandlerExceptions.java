@@ -1,5 +1,9 @@
 package com.example.cupcat.exception;
 
+import com.example.cupcat.exception.details.ExceptionDetails;
+import com.example.cupcat.exception.details.InvalidArgumentExceptionDetails;
+import com.example.cupcat.exception.errors.AlreadyExistingException;
+import com.example.cupcat.exception.errors.NotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;

@@ -2,7 +2,6 @@ package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.CategoriaDTO;
 import com.example.cupcat.model.Categoria;
-import com.example.cupcat.service.ICategoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

@@ -1,9 +1,10 @@
 package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ProdutoDTO;
-import com.example.cupcat.exception.AlreadyExistingException;
+import com.example.cupcat.exception.errors.AlreadyExistingException;
 import com.example.cupcat.model.Produto;
 import com.example.cupcat.repository.ProdutoRepo;
+import com.example.cupcat.service.iinterface.*;
 import com.example.cupcat.view.ProdutoView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ProdutoService implements IProduto{
+public class ProdutoService implements IProduto {
     private final ProdutoRepo repo;
     private final IModelo modeloService;
     private final ICor corService;

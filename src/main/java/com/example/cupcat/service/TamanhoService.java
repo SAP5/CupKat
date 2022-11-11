@@ -2,6 +2,7 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.model.Tamanho;
 import com.example.cupcat.repository.TamanhoRepo;
+import com.example.cupcat.service.iinterface.ITamanho;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class TamanhoService implements ITamanho{
+public class TamanhoService implements ITamanho {
     private final TamanhoRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Tamanho não encontrado!";
 

@@ -1,9 +1,10 @@
 package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ModeloDTO;
-import com.example.cupcat.exception.AlreadyExistingException;
+import com.example.cupcat.exception.errors.AlreadyExistingException;
 import com.example.cupcat.model.Modelo;
 import com.example.cupcat.repository.ModeloRepo;
+import com.example.cupcat.service.iinterface.IModelo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ModeloService implements IModelo{
+public class ModeloService implements IModelo {
     private final ModeloRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Modelo não encontrado!";
 

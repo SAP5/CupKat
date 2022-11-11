@@ -1,7 +1,7 @@
-package com.example.cupcat.service;
+package com.example.cupcat.service.iinterface;
 
 import com.example.cupcat.dto.ProdutoDTO;
-import com.example.cupcat.exception.AlreadyExistingException;
+import com.example.cupcat.exception.errors.AlreadyExistingException;
 import com.example.cupcat.model.Produto;
 import com.example.cupcat.view.ProdutoView;
 
