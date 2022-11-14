@@ -35,4 +35,10 @@ public class Cor implements Serializable {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+    public Cor(int id, String nome, String cor) {
+        this.id = id;
+        this.nome = nome;
+        this.cor = cor;
+    }
 }

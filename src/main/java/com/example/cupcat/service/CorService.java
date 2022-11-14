@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CorService implements ICor{
+public class CorService implements ICor {
     private final CorRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Cor não encontrada!";
 

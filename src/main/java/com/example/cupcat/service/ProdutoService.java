@@ -2,9 +2,9 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ProdutoDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Produto;
 import com.example.cupcat.repository.ProdutoRepo;
+import com.example.cupcat.view.ProdutoView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ProdutoService implements IProduto{
+public class ProdutoService implements IProduto {
     private final ProdutoRepo repo;
     private final IModelo modeloService;
     private final ICor corService;
@@ -31,8 +31,8 @@ public class ProdutoService implements IProduto{
     }
 
     @Override
-    public List<Produto> getAll() {
-        return repo.findAll();
+    public List<ProdutoView> getAll() {
+        return repo.findAll().stream().map(ProdutoView::new).collect(Collectors.toList());
     }
 
     @Override
@@ -42,6 +42,15 @@ public class ProdutoService implements IProduto{
         if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
 
         return produto;
+    }
+
+    @Override
+    public ProdutoView getProdutoByIdView(int id) throws NoSuchElementException {
+        Optional<Produto> produto = repo.findById(id);
+
+        if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return new ProdutoView(produto.get());
     }
 
     @Override
@@ -66,8 +75,14 @@ public class ProdutoService implements IProduto{
     }
 
     @Override
-    public Optional<List<Produto>> getProdutosByNome(String nome) {
-        return repo.findByNomeContaining(nome);
+    public Optional<List<ProdutoView>> getProdutosByNome(String nome) {
+        return Optional.of(repo.findByNomeContaining(nome).get().stream()
+                .map(ProdutoView::new).collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<Object> getCoresByProdutoId(int id) {
+        return repo.getCoresByIdProduto(id);
     }
 
 //    @Override

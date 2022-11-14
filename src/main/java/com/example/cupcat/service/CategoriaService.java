@@ -1,7 +1,6 @@
 package com.example.cupcat.service;
 
 import com.example.cupcat.dto.CategoriaDTO;
-import com.example.cupcat.exception.AlreadyExistingException;
 import com.example.cupcat.model.Categoria;
 import com.example.cupcat.repository.CategoriaRepo;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CategoriaService implements ICategoria{
+public class CategoriaService implements ICategoria {
     private final CategoriaRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Categoria não encontrada!";
 
