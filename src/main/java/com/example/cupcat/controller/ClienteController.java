@@ -34,7 +34,7 @@ public class ClienteController {
     }
 
     @GetMapping("/by_email/{email}")
-    public ResponseEntity<List<ClienteDTO>> getClienteByEmail(@PathVariable String email){
+    public ResponseEntity<ClienteDTO> getClienteByEmail(@PathVariable String email){
         return new ResponseEntity<>(clienteService.getByEmail(email), HttpStatus.OK);
     }
 
