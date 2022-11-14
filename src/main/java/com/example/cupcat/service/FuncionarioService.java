@@ -63,7 +63,7 @@ public class FuncionarioService implements IFuncionario {
     }
 
     @Override
-    public List<FuncionarioDTO> getByEmail(String email) {
-        return repo.findByEmailContaining(email).stream().map(FuncionarioDTO::new).collect(Collectors.toList());
+    public FuncionarioDTO getByEmail(String email) {
+        return new FuncionarioDTO(repo.findByEmailContaining(email).orElseThrow(() -> new NotFoundException("Nenhum funcionário encontrado!")));
     }
 }

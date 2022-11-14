@@ -34,7 +34,7 @@ public class FuncionarioController {
     }
 
     @GetMapping("/by_email/{email}")
-    public ResponseEntity<List<FuncionarioDTO>> getFuncionarioByEmail(@PathVariable String email){
+    public ResponseEntity<FuncionarioDTO> getFuncionarioByEmail(@PathVariable String email){
         return new ResponseEntity<>(funcionarioService.getByEmail(email), HttpStatus.OK);
     }
 
