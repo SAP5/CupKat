@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface FuncionarioRepo extends JpaRepository<Funcionario, Integer> {
-    Optional<Funcionario> findByEmailContaining(String email);
+    Optional<Funcionario> findByEmail(String email);
 }
