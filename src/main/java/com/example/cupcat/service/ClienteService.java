@@ -62,15 +62,11 @@ public class ClienteService implements ICliente {
     }
 
     @Override
-    public ClienteDTO getByEmail(String email) throws NotFoundException {
+    public ClienteDTO getByEmail(String email) throws NoSuchElementException {
         try{
-            Optional<Cliente> opCliente = repo.findByEmail(email);
-
-            if(opCliente.isEmpty()) throw new NotFoundException("Nenhum usuário encontrado!");
-
-            return new ClienteDTO(opCliente.get());
+            return new ClienteDTO(repo.findByEmail(email).get());
         }catch (NoSuchElementException ex){
-            throw new NotFoundException("Nenhum usuário encontrado");
+            throw new NoSuchElementException("Nenhum usuário encontrado");
         }
     }
 }
