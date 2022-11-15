@@ -1,10 +1,8 @@
 package com.example.cupcat.service;
 
-import com.example.cupcat.dto.ClienteDTO;
 import com.example.cupcat.dto.FuncionarioDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
 import com.example.cupcat.exception.NotFoundException;
-import com.example.cupcat.model.Cliente;
 import com.example.cupcat.model.Funcionario;
 import com.example.cupcat.repository.FuncionarioRepo;
 import lombok.RequiredArgsConstructor;
@@ -66,7 +64,7 @@ public class FuncionarioService implements IFuncionario{
     }
 
     @Override
-    public FuncionarioDTO getByEmail(String email) {
+    public FuncionarioDTO getByEmail(String email) throws NotFoundException {
         return new FuncionarioDTO(repo.findByEmailContaining(email).orElseThrow(() -> new NotFoundException("Nenhum funcionário encontrado!")));
     }
 }

@@ -63,7 +63,7 @@ public class ClienteService implements ICliente{
     }
 
     @Override
-    public ClienteDTO getByEmail(String email) {
+    public ClienteDTO getByEmail(String email) throws NotFoundException {
         return new ClienteDTO(repo.findByEmailContaining(email).orElseThrow(() -> new NotFoundException("Nenhum usuário encontrado!")));
     }
 }
