@@ -15,5 +15,5 @@ public interface ICliente {
     Optional<ClienteDTO> getClienteById(int id) throws NoSuchElementException;
     void updateCliente(Cliente cliente) throws NoSuchElementException;
     Optional<ClienteDTO> removeClienteById(int id) throws NoSuchElementException;
-    ClienteDTO getByEmail(String email) throws NotFoundException;
+    ClienteDTO getByEmail(String email) throws NoSuchElementException;
 }
