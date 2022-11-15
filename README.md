@@ -662,7 +662,12 @@ GET /clientes/by_email/{email}
 **Retorno em caso de correspondência não encontrada**
 
 ```json
-[]
+{
+  "title": "Objeto não encontrado",
+  "status": 404,
+  "message": "Nenhum usuário encontrado",
+  "timeStamp": "2022-11-14T22:31:36.1412154"
+}
 ```
 
 ### Cadastrar um Cliente
@@ -865,7 +870,12 @@ GET /funcionarios/by_email/{email}
 **Retorno em caso de correspondência não encontrada**
 
 ```json
-[]
+{
+  "title": "Objeto não encontrado",
+  "status": 404,
+  "message": "Nenhum funcionário encontrado",
+  "timeStamp": "2022-11-14T22:31:36.1412154"
+}
 ```
 
 ### Cadastrar um Funcionário
