@@ -1,9 +1,9 @@
 package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.ProdutoDTO;
-import com.example.cupcat.model.Modelo;
 import com.example.cupcat.model.Produto;
 import com.example.cupcat.service.IProduto;
+import com.example.cupcat.view.ProdutoView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class ProdutoController {
     private IProduto produtoService;
 
     @GetMapping
-    public ResponseEntity<List<Produto>> getAllProdutos(){
+    public ResponseEntity<List<ProdutoView>> getAllProdutos(){
         return new ResponseEntity<>(produtoService.getAll(), HttpStatus.OK);
     }
 
@@ -35,7 +35,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/by_name/{nome}")
-    public ResponseEntity<List<Produto>> getProdutosByNome(@PathVariable String nome){
+    public ResponseEntity<List<ProdutoView>> getProdutosByNome(@PathVariable String nome){
         return new ResponseEntity<>(produtoService.getProdutosByNome(nome).get(), HttpStatus.OK);
     }
 //

@@ -2,7 +2,6 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ClienteDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Cliente;
 import com.example.cupcat.repository.ClienteRepo;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ClienteService implements ICliente{
+public class ClienteService implements ICliente {
     private final ClienteRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Cliente não encontrado!";
     private static final String MSG_ERROR_ALREADY_EXISTING = "Cliente já cadastrado!";

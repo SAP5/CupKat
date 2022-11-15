@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class FuncionarioService implements IFuncionario{
+public class FuncionarioService implements IFuncionario {
     private final FuncionarioRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Funcionario não encontrado!";
     private static final String MSG_ERROR_ALREADY_EXISTING = "Funcionario já cadastrado!";
