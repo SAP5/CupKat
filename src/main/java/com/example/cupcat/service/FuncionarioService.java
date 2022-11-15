@@ -65,6 +65,14 @@ public class FuncionarioService implements IFuncionario {
 
     @Override
     public FuncionarioDTO getByEmail(String email) throws NotFoundException {
-        return new FuncionarioDTO(repo.findByEmailContaining(email).orElseThrow(() -> new NotFoundException("Nenhum funcionário encontrado!")));
+        try{
+            Optional<Funcionario> opFuncionario = repo.findByEmail(email);
+
+            if(opFuncionario.isEmpty()) throw new NotFoundException("Nenhum usuário encontrado");
+
+            return new FuncionarioDTO(opFuncionario.get());
+        } catch (NoSuchElementException ex){
+            throw new NotFoundException("Nenhum usuário encontrado");
+        }
     }
 }
