@@ -20,9 +20,7 @@ public class ModeloService implements IModelo {
 
     @Override
     public void save(ModeloDTO modeloDTO) throws AlreadyExistingException {
-        Modelo modelo = new Modelo(modeloDTO);
-
-        repo.save(modelo);
+        repo.save(new Modelo(modeloDTO));
     }
 
     @Override
@@ -40,9 +38,10 @@ public class ModeloService implements IModelo {
     }
 
     @Override
-    public void updateModelo(Modelo modelo, int id) throws NoSuchElementException {
+    public void updateModelo(ModeloDTO modeloDTO, int id) throws NoSuchElementException {
         if(!repo.existsById(id)) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
 
+        Modelo modelo = new Modelo(modeloDTO);
         modelo.setId(id);
         repo.save(modelo);
     }

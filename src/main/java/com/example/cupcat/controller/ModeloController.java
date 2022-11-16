@@ -35,10 +35,11 @@ public class ModeloController {
         return new ResponseEntity<>(modeloService.getModeloById(id).get(), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void updateModelo(@PathVariable int id, @Valid @RequestBody Modelo modelo){
-        modeloService.updateModelo(modelo, id);
+    public void updateModelo(@PathVariable int id, @Valid @RequestBody ModeloDTO modeloDTO){
+        modeloService.updateModelo(modeloDTO, id);
     }
 
     @DeleteMapping("/delete/{id}")

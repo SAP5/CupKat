@@ -13,6 +13,7 @@ public interface IModelo {
     void save(ModeloDTO modeloDTO) throws AlreadyExistingException;
     List<Modelo> getAll();
     Optional<Modelo> getModeloById(int id) throws NoSuchElementException;
-    void updateModelo(Modelo modelo, int id) throws NoSuchElementException;
+    void updateModelo(ModeloDTO modeloDTO, int id) throws NoSuchElementException;
+
     Optional<Modelo> removeModeloById(int id) throws NoSuchElementException, DataIntegrityViolationException;
 }
