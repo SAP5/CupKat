@@ -45,6 +45,15 @@ public class ClienteService implements ICliente {
     }
 
     @Override
+    public Optional<Cliente> getClienteCompById(int id) throws NoSuchElementException {
+        Optional<Cliente> opCliente = repo.findById(id);
+
+        if(opCliente.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return Optional.of(opCliente.get());
+    }
+
+    @Override
     public void updateCliente(Cliente cliente) throws NoSuchElementException {
         if(!repo.existsById(cliente.getId())) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
         repo.save(cliente);

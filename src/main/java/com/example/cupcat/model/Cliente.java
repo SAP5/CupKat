@@ -1,5 +1,7 @@
 package com.example.cupcat.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -47,6 +50,12 @@ public class Cliente implements Serializable {
     @Pattern(regexp = "^[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}", message = "O cpf está em um formato inválido")
     @Column(unique = true)
     private String cpf;
+
+    @OneToMany(mappedBy = "cliente")
+    @JsonIgnoreProperties("cliente")
+    @JsonManagedReference
+    @ToString.Exclude
+    private List<Carrinho> carrinhos;
 
     @Override
     public int hashCode() {

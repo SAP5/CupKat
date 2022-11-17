@@ -64,6 +64,13 @@ public class ProdutoService implements IProduto {
     }
 
     @Override
+    public void updateQtdProduto(Produto produto, int quantidade) throws NoSuchElementException {
+        produto.setEstoque(produto.getEstoque() - quantidade);
+
+        repo.save(produto);
+    }
+
+    @Override
     public Optional<Produto> removeProdutoById(int id) throws NoSuchElementException {
         Optional<Produto> produto = getProdutoById(id);
 

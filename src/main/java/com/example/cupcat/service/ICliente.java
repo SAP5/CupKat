@@ -13,6 +13,9 @@ public interface ICliente {
     void save(Cliente cliente) throws AlreadyExistingException;
     List<ClienteDTO> getAll();
     Optional<ClienteDTO> getClienteById(int id) throws NoSuchElementException;
+
+    Optional<Cliente> getClienteCompById(int id) throws NoSuchElementException;
+
     void updateCliente(Cliente cliente) throws NoSuchElementException;
     Optional<ClienteDTO> removeClienteById(int id) throws NoSuchElementException;
     ClienteDTO getByEmail(String email) throws NoSuchElementException;
