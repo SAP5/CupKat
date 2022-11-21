@@ -2,7 +2,6 @@ package com.example.cupcat.service;
 
 import com.example.cupcat.dto.ClienteDTO;
 import com.example.cupcat.exception.AlreadyExistingException;
-import com.example.cupcat.exception.NotFoundException;
 import com.example.cupcat.model.Cliente;
 import com.example.cupcat.repository.ClienteRepo;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ClienteService implements ICliente{
+public class ClienteService implements ICliente {
     private final ClienteRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Cliente não encontrado!";
     private static final String MSG_ERROR_ALREADY_EXISTING = "Cliente já cadastrado!";
@@ -46,6 +45,15 @@ public class ClienteService implements ICliente{
     }
 
     @Override
+    public Optional<Cliente> getClienteCompById(int id) throws NoSuchElementException {
+        Optional<Cliente> opCliente = repo.findById(id);
+
+        if(opCliente.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+
+        return Optional.of(opCliente.get());
+    }
+
+    @Override
     public void updateCliente(Cliente cliente) throws NoSuchElementException {
         if(!repo.existsById(cliente.getId())) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
         repo.save(cliente);
@@ -63,7 +71,11 @@ public class ClienteService implements ICliente{
     }
 
     @Override
-    public List<ClienteDTO> getByEmail(String email) {
-        return repo.findByEmailContaining(email).stream().map(ClienteDTO::new).collect(Collectors.toList());
+    public ClienteDTO getByEmail(String email) throws NoSuchElementException {
+        try{
+            return new ClienteDTO(repo.findByEmail(email).get());
+        }catch (NoSuchElementException ex){
+            throw new NoSuchElementException("Nenhum usuário encontrado");
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.example.cupcat.model;
 import com.example.cupcat.dto.ProdutoDTO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -89,6 +91,12 @@ public class Produto implements Serializable {
     @JsonIgnoreProperties("produtos")
     @JsonBackReference
     private Modelo modelo;
+
+    @OneToMany(mappedBy = "produto")
+    @JsonIgnoreProperties("produto")
+    @JsonManagedReference
+    @ToString.Exclude
+    private List<ItemCarrinho> itemCarrinho;
 
     @Column
     private String imagem;

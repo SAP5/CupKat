@@ -644,27 +644,30 @@ GET /clientes/by_email/{email}
 |:----------|:---------| :---------------------------------------------------- |
 | `email`   | `String` | **Obrigatório**. Parâmetros devem ser passados na URL |
 
-| Descrição                                                                                     |
-|:----------------------------------------------------------------------------------------------|
-| Será retornada uma lista de clientes cujo email contenha alguma correspondencia com o enviado |
+| Descrição                                                                |
+|:-------------------------------------------------------------------------|
+| Será retornada um cliente cujo email esteja cadastrado no banco de dados |
 
 **Retorno em caso de sucesso**
 
 ```json
-[
-  {
-    "id": 1,
-    "status": 1,
-    "nome": "Giovanna",
-    "email": "teste23@gmail.com"
-  }
-]
+{
+  "id": 1,
+  "status": 1,
+  "nome": "Giovanna",
+  "email": "teste23@gmail.com"
+}
 ```
 
 **Retorno em caso de correspondência não encontrada**
 
 ```json
-[]
+{
+  "title": "Objeto não encontrado",
+  "status": 404,
+  "message": "Nenhum usuário encontrado",
+  "timeStamp": "2022-11-14T22:31:36.1412154"
+}
 ```
 
 ### Cadastrar um Cliente
@@ -839,37 +842,40 @@ GET /funcionarios/by_id/{id}
 }
 ```
 
-### Recuperar um Funcionário pelo id
+### Recuperar um Funcionário pelo email
 
 ```http
-GET /funcionarios/by_id/{id}
+GET /funcionarios/by_email/{email}
 ```
 
-| Parâmetro   | Tipo       | Descrição                                             |
-| :---------- | :--------- | :---------------------------------------------------- |
-| `id`        | `int`      | **Obrigatório**. Parâmetros devem ser passados na URL |
+| Parâmetro | Tipo     | Descrição                                             |
+|:----------|:---------| :---------------------------------------------------- |
+| `email`   | `String` | **Obrigatório**. Parâmetros devem ser passados na URL |
 
-| Descrição                                                                                         |
-|:--------------------------------------------------------------------------------------------------|
-| Será retornada uma lista de funcionários cujo email contenha alguma correspondencia com o enviado |
+| Descrição                                                                   |
+|:----------------------------------------------------------------------------|
+| Será retornada um funcionário cujo email esteja cadastado no banco de dados |
 
 **Retorno em caso de sucesso**
 
 ```json
-[
-  {
-    "id": 1,
-    "status": 1,
-    "nome": "Giovanna",
-    "email": "teste23@gmail.com"
-  }
-]
+{
+  "id": 1,
+  "status": 1,
+  "nome": "Giovanna",
+  "email": "teste23@gmail.com"
+}
 ```
 
 **Retorno em caso de correspondência não encontrada**
 
 ```json
-[]
+{
+  "title": "Objeto não encontrado",
+  "status": 404,
+  "message": "Nenhum funcionário encontrado",
+  "timeStamp": "2022-11-14T22:31:36.1412154"
+}
 ```
 
 ### Cadastrar um Funcionário

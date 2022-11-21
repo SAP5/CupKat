@@ -1,14 +1,10 @@
 package com.example.cupcat.dto;
 
-import com.example.cupcat.model.Categoria;
-import com.example.cupcat.model.Modelo;
 import lombok.Data;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Data

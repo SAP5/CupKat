@@ -1,7 +1,6 @@
 package com.example.cupcat.controller;
 
 import com.example.cupcat.dto.ModeloDTO;
-import com.example.cupcat.model.Categoria;
 import com.example.cupcat.model.Modelo;
 import com.example.cupcat.service.IModelo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +35,11 @@ public class ModeloController {
         return new ResponseEntity<>(modeloService.getModeloById(id).get(), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void updateModelo(@PathVariable int id, @Valid @RequestBody Modelo modelo){
-        modeloService.updateModelo(modelo, id);
+    public void updateModelo(@PathVariable int id, @Valid @RequestBody ModeloDTO modeloDTO){
+        modeloService.updateModelo(modeloDTO, id);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -1,10 +1,7 @@
 package com.example.cupcat.controller;
 
-import com.example.cupcat.dto.ClienteDTO;
 import com.example.cupcat.dto.FuncionarioDTO;
-import com.example.cupcat.model.Cliente;
 import com.example.cupcat.model.Funcionario;
-import com.example.cupcat.service.ICliente;
 import com.example.cupcat.service.IFuncionario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,7 +34,7 @@ public class FuncionarioController {
     }
 
     @GetMapping("/by_email/{email}")
-    public ResponseEntity<List<FuncionarioDTO>> getFuncionarioByEmail(@PathVariable String email){
+    public ResponseEntity<FuncionarioDTO> getFuncionarioByEmail(@PathVariable String email){
         return new ResponseEntity<>(funcionarioService.getByEmail(email), HttpStatus.OK);
     }
 

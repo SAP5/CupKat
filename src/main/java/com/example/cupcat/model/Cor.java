@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -31,8 +32,20 @@ public class Cor implements Serializable {
     @ToString.Exclude
     private Set<Produto> produtos;
 
+    @OneToMany(mappedBy = "cor")
+    @JsonIgnoreProperties("cor")
+    @JsonManagedReference
+    @ToString.Exclude
+    private List<ItemCarrinho> itemCarrinho;
+
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public Cor(int id, String nome, String cor) {
+        this.id = id;
+        this.nome = nome;
+        this.cor = cor;
     }
 }

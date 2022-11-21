@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class TamanhoService implements ITamanho{
+public class TamanhoService implements ITamanho {
     private final TamanhoRepo repo;
     private static final String MSG_ERROR_NOT_FOUND = "Tamanho não encontrado!";
 
