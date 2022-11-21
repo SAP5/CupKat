@@ -30,8 +30,8 @@ public class ProdutoController {
     }
 
     @GetMapping("/by_id/{id}")
-    public ResponseEntity<Produto> getProdutoById(@PathVariable int id){
-        return new ResponseEntity<>(produtoService.getProdutoById(id).get(), HttpStatus.OK);
+    public ResponseEntity<ProdutoView> getProdutoById(@PathVariable int id){
+        return new ResponseEntity<>(produtoService.getProdutoByIdView(id), HttpStatus.OK);
     }
 
     @GetMapping("/by_name/{nome}")
