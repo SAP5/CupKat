@@ -6,6 +6,7 @@ import com.example.cupcat.model.Produto;
 import com.example.cupcat.repository.ProdutoRepo;
 import com.example.cupcat.view.ProdutoView;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -71,14 +72,18 @@ public class ProdutoService implements IProduto {
     }
 
     @Override
-    public Optional<Produto> removeProdutoById(int id) throws NoSuchElementException {
-        Optional<Produto> produto = getProdutoById(id);
+    public Optional<ProdutoView> removeProdutoById(int id) throws NoSuchElementException {
+        try{
+            Optional<ProdutoView> produto = Optional.of(getProdutoByIdView(id));
 
-        if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+            if(produto.isEmpty()) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
 
-        repo.deleteById(id);
+            repo.deleteById(id);
 
-        return produto;
+            return produto;
+        }catch (DataIntegrityViolationException ex){
+            throw new DataIntegrityViolationException("Não é possível excluir um produto que possui pedidos!");
+        }
     }
 
     @Override

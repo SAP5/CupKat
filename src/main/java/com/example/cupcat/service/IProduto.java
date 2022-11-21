@@ -16,7 +16,7 @@ public interface IProduto {
     ProdutoView getProdutoByIdView(int id) throws NoSuchElementException;
     void updateProduto(ProdutoDTO produto, int id) throws NoSuchElementException;
     void updateQtdProduto(Produto produto, int quantidade) throws NoSuchElementException;
-    Optional<Produto> removeProdutoById(int id) throws NoSuchElementException;
+    Optional<ProdutoView> removeProdutoById(int id) throws NoSuchElementException;
     Optional<List<ProdutoView>> getProdutosByNome(String nome);
     List<Object> getCoresByProdutoId(int id);
 //    Optional<List<Produto>> getProdutosByCategoria(int categoria);
