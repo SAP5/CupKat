@@ -8,6 +8,7 @@ import com.example.cupcat.model.Produto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ public class ProdutoView {
     private int id;
     private String nome;
     private String descricao;
+    private BigDecimal custo;
     private double lucro;
     private int estoque;
     private List<CorDTO> cores;
@@ -29,6 +31,7 @@ public class ProdutoView {
         this.id = produto.getId();
         this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
+        this.custo = produto.getModelo().getPrecoCusto();
         this.lucro = produto.getLucro();
         this.estoque = produto.getEstoque();
         this.cores = produto.getCores().stream().map(CorDTO::new).collect(Collectors.toList());
