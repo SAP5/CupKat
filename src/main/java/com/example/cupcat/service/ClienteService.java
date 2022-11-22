@@ -21,10 +21,10 @@ public class ClienteService implements ICliente {
     private static final String MSG_ERROR_ALREADY_EXISTING = "Cliente já cadastrado!";
 
     @Override
-    public void save(Cliente cliente) throws AlreadyExistingException, DataIntegrityViolationException {
+    public void save(ClienteDTO clienteDTO) throws AlreadyExistingException, DataIntegrityViolationException {
         try{
-            if(cliente.getId() != 0) throw new AlreadyExistingException(MSG_ERROR_ALREADY_EXISTING);
-            repo.save(cliente);
+            if(clienteDTO.getId() != 0) throw new AlreadyExistingException(MSG_ERROR_ALREADY_EXISTING);
+            repo.save(new Cliente(clienteDTO));
         } catch (DataIntegrityViolationException ex){
             throw new AlreadyExistingException(MSG_ERROR_ALREADY_EXISTING);
         }
@@ -54,9 +54,9 @@ public class ClienteService implements ICliente {
     }
 
     @Override
-    public void updateCliente(Cliente cliente) throws NoSuchElementException {
-        if(!repo.existsById(cliente.getId())) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
-        repo.save(cliente);
+    public void updateCliente(ClienteDTO clienteDTO) throws NoSuchElementException {
+        if(!repo.existsById(clienteDTO.getId())) throw new NoSuchElementException(MSG_ERROR_NOT_FOUND);
+        repo.save(new Cliente(clienteDTO));
     }
 
     @Override
