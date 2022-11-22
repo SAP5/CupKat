@@ -24,8 +24,8 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveCliente(@Valid @RequestBody Cliente cliente){
-        clienteService.save(cliente);
+    public void saveCliente(@Valid @RequestBody ClienteDTO clienteDTO){
+        clienteService.save(clienteDTO);
     }
 
     @GetMapping("/by_id/{id}")
@@ -40,9 +40,9 @@ public class ClienteController {
 
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateCliente(@RequestBody Cliente cliente, @PathVariable int id){
-        cliente.setId(id);
-        clienteService.updateCliente(cliente);
+    public void updateCliente(@RequestBody ClienteDTO clienteDTO, @PathVariable int id){
+        clienteDTO.setId(id);
+        clienteService.updateCliente(clienteDTO);
     }
 
     @DeleteMapping("/delete/{id}")

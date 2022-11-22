@@ -1,5 +1,6 @@
 package com.example.cupcat.model;
 
+import com.example.cupcat.dto.ClienteDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -60,5 +61,13 @@ public class Cliente implements Serializable {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public Cliente(ClienteDTO clienteDTO) {
+        this.id = clienteDTO.getId();
+        this.nome = clienteDTO.getNome();
+        this.email = clienteDTO.getEmail();
+        this.senha = clienteDTO.getSenha();
+        this.cpf = clienteDTO.getCpf();
     }
 }

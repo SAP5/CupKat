@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 public class ClienteDTO extends ModelDTO implements Serializable {
+    private String cpf;
     private String nome;
     private String email;
     private String senha;
@@ -19,6 +20,7 @@ public class ClienteDTO extends ModelDTO implements Serializable {
     public ClienteDTO(Cliente cliente){
         this.setId(cliente.getId());
         this.setStatus(cliente.getStatus());
+        this.setCpf(cliente.getCpf());
         this.setNome(cliente.getNome());
         this.setEmail(cliente.getEmail());
         this.setSenha(cliente.getSenha());
