@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,6 +24,7 @@ public class ItemCarrinhoDTO {
         ItemCarrinho itemCarrinho = new ItemCarrinho();
 
         itemCarrinho.setQuantidade(itemCarrinhoDTO.getQuantidade());
+        itemCarrinho.setValorProduto(produto.getModelo().getPrecoCusto().add(BigDecimal.valueOf(produto.getLucro())));
         itemCarrinho.setProduto(produto);
         itemCarrinho.setCor(cor);
         itemCarrinho.setCarrinho(carrinho);

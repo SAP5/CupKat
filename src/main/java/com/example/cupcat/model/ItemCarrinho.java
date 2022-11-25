@@ -25,11 +25,19 @@ public class ItemCarrinho {
 
     private BigDecimal valorProduto;
 
+    private BigDecimal valorPago;
+
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "id_cor")
     @JsonIgnoreProperties("itensCarrinho")
     private Cor cor;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name = "id_tamanho")
+    @JsonIgnoreProperties("itensCarrinho")
+    private Tamanho tamanho;
 
     @NotNull
     @ManyToOne

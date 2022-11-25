@@ -22,6 +22,26 @@ public class CarrinhoService implements ICarrinho{
 
     @Override
     public void save(CarrinhoDTO carrinhoDTO) {
+        List<Carrinho> carrinhos = getAllByCliente(carrinhoDTO.getCliente());
+        if(!carrinhos.isEmpty()){
+            List<ItemCarrinho> itensCarrinho = carrinhos.stream().map(Carrinho::getItensCarrinho).map(List::stream).flatMap(x -> x).collect(Collectors.toList());
+            List<ItemCarrinhoDTO> itensCarrinhoDTO = carrinhoDTO.getItensCarrinho();
+
+            for (ItemCarrinho itemCarrinho : itensCarrinho) {
+                for (int j = 0; j < itensCarrinhoDTO.size(); j++) {
+                    if (itemCarrinho.getProduto().getId() == itensCarrinhoDTO.get(j).getProduto()) {
+                        itensCarrinhoDTO.get(j).setQuantidade(itemCarrinho.getQuantidade() + itensCarrinhoDTO.get(j).getQuantidade());
+
+                        repo.deleteById(itemCarrinho.getCarrinho().getId());
+                    } else {
+                        itensCarrinhoDTO.add(new ItemCarrinhoDTO(itemCarrinho));
+                    }
+                }
+            }
+
+            carrinhoDTO.setItensCarrinho(itensCarrinhoDTO);
+        }
+
         repo.save(createAttributes(carrinhoDTO));
     }
 
@@ -47,7 +67,7 @@ public class CarrinhoService implements ICarrinho{
     private void validadeEstoque(List<Produto> produtos, List<ItemCarrinhoDTO> itens){
         for (int i = 0; i < produtos.size(); i++) {
             if(produtos.get(i).getEstoque() < itens.get(i).getQuantidade())
-                throw new OutOfStockException("O estoque do produto: " +produtos.get(i).getNome()+ " é insufuciente!");
+                throw new OutOfStockException("O estoque do produto: " +produtos.get(i).getNome()+ " é insuficiente!");
         }
     }
 
