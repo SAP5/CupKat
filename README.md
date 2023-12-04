@@ -4,7 +4,7 @@
     <img src="http://img.shields.io/static/v1?label=JAVA&message=11&color=blue&style=for-the-badge"/>
 </p>
 
-<h4 align="center">:construction: Projeto em construção :construction:</h4>
+<h4 align="center">Projeto em construção</h4>
 
 <img src="https://github.com/SAP5/CupKat/blob/master/src/main/resources/cupkat.jpeg" alt="logotipo CupKat" width="140px" align="right">
 
